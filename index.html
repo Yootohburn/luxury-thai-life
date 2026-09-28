@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luxury Thai Life</title>
+<meta name="description" content="Exceptional homes, long-term stay guidance and private relocation advisory for international clients in Thailand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ivory:#f5f4f2;--paper:#faf9f7;--sunk:#efede8;--line:#d7d2c8;--line-soft:#e7e3dc;
+  --ink:#141210;--text2:#6e695f;--dark:#0e0d0c;--dcard:#161413;--dtext:#f3f0ea;--dmute:#a39c92;
+  --bronze:#7d5f3c;--bronze-l:#c9ab83;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Geist',-apple-system,'Segoe UI',system-ui,sans-serif;
+  --mono:'Geist Mono','SF Mono',ui-monospace,monospace;
+  --gut:clamp(16px,4.5vw,64px);
+  --sec:clamp(72px,9vw,128px);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0;text-wrap:pretty}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+.wrap{padding-inline:var(--gut)}
+.sec{padding-block:var(--sec)}
+.eb{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze)}
+.eb.mute{color:var(--text2);font-size:11px}
+.dark .eb,.eb.light{color:var(--bronze-l)}
+.h2{font-size:clamp(38px,5vw,68px);line-height:1.02}
+.lead{font-size:clamp(16px,1.4vw,18px);color:var(--text2);max-width:34em}
+.muted{color:var(--text2)}
+.bg-paper{background:var(--paper)}.bg-sunk{background:var(--sunk)}.bg-ivory{background:var(--ivory)}
+.dark{background:var(--dark);color:var(--dtext)}
+.dark .lead,.dark .muted{color:var(--dmute)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 30px;border-radius:2px;border:1px solid var(--ink);background:var(--ink);color:var(--dtext);font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:opacity .3s,background-color .3s,color .3s;text-align:center}
+.btn:hover{opacity:.86}
+.btn.outline{background:transparent;color:var(--ink)}
+.btn.outline:hover{background:var(--ink);color:var(--dtext);opacity:1}
+.btn.light{background:var(--dtext);border-color:var(--dtext);color:var(--ink)}
+.btn.ghost{background:transparent;border-color:rgba(243,240,234,.7);color:var(--dtext)}
+.btn.ghost:hover{background:var(--dtext);color:var(--ink);opacity:1}
+.btn.sm{min-height:44px;padding:0 22px;font-size:12px}
+.btns{display:flex;flex-wrap:wrap;gap:14px}
+.tl{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding-bottom:6px;border-bottom:1px solid currentColor;white-space:nowrap}
+.tl svg{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.tl:hover svg{transform:translateX(4px)}
+@media (max-width:560px){.tl{white-space:normal}}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:50;padding-top:env(safe-area-inset-top,0px);color:var(--dtext);border-bottom:1px solid rgba(243,240,234,.22);transition:background-color .4s,color .4s,border-color .4s}
+.hdr-in{height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+body.solid .hdr{background:rgba(250,249,247,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);border-color:var(--line-soft)}
+.logo{display:flex;flex-direction:column;gap:4px;text-decoration:none}
+.logo b{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;line-height:1}
+.logo span{font-family:var(--mono);font-size:9px;letter-spacing:.32em;text-transform:uppercase;opacity:.78}
+.nav{display:flex;gap:28px}
+.nav a{font-size:14px;text-decoration:none;padding:6px 0;border-bottom:1px solid transparent;white-space:nowrap}
+.nav a:hover,.nav a[aria-current="page"]{border-color:currentColor}
+.hdr .btn.ghost{color:inherit;border-color:currentColor}
+body.solid .hdr .btn.ghost:hover{background:var(--ink);color:var(--dtext)}
+.menu-btn{display:none;width:44px;height:44px;align-items:center;justify-content:center;background:transparent;border:0;color:inherit;cursor:pointer}
+.mnav{position:fixed;inset:0;z-index:60;background:var(--dark);color:var(--dtext);padding:calc(env(safe-area-inset-top,0px) + 24px) var(--gut) 32px;display:flex;flex-direction:column;gap:32px;overflow:auto}
+.mnav-top{display:flex;justify-content:space-between;align-items:center}
+.mnav nav{display:flex;flex-direction:column}
+.mnav nav a{font-family:var(--serif);font-size:34px;line-height:1.1;padding:12px 0;border-bottom:1px solid rgba(243,240,234,.14);text-decoration:none}
+@media (max-width:1180px){.nav,.hdr .hdr-cta{display:none}.menu-btn{display:inline-flex}}
+
+/* hero */
+.hero{position:relative;min-height:clamp(560px,86vh,900px);display:flex;align-items:flex-end;color:var(--dtext);background:var(--dark);overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,13,12,.5) 0%,rgba(14,13,12,0) 65%),linear-gradient(180deg,rgba(14,13,12,.5) 0%,rgba(14,13,12,0) 22%,rgba(14,13,12,.2) 45%,rgba(14,13,12,.85) 100%)}
+.hero-in{position:relative;z-index:1;width:100%;padding-top:140px;padding-bottom:clamp(40px,7vw,96px);display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
+.hero-copy{display:flex;flex-direction:column;gap:26px;max-width:1180px}
+.display{font-size:clamp(46px,7vw,100px);line-height:.98;letter-spacing:-.01em}
+.hero p{font-size:clamp(16px,1.5vw,20px);line-height:1.55;max-width:560px;color:rgba(243,240,234,.92)}
+.hero-side{display:flex;flex-direction:column;align-items:flex-end;gap:14px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,240,234,.8);white-space:nowrap}
+.ticks{display:flex;gap:8px}.ticks i{width:36px;height:2px;background:rgba(243,240,234,.35)}.ticks i:first-child{background:var(--dtext)}
+.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2)}
+.crumb a{text-decoration:none}
+.hero .crumb{color:rgba(243,240,234,.85)}
+.credit{position:absolute;right:var(--gut);bottom:14px;z-index:1;font-size:11px;color:rgba(243,240,234,.7)}
+@media (max-width:760px){.hero-side{display:none}.hero .btns .btn{flex:1 1 100%}}
+
+/* search */
+.search{padding-block:48px;border-bottom:1px solid var(--line-soft);display:flex;flex-direction:column;gap:22px}
+.sform{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) auto;border:1px solid var(--line);background:#fff}
+.sfield{display:flex;flex-direction:column;justify-content:center;gap:8px;min-height:88px;padding:0 24px;border:0;border-right:1px solid var(--line-soft);background:transparent;text-align:left;color:var(--ink);cursor:pointer}
+.sfield small,.lab{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text2)}
+.sfield span{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:17px}
+.sform .btn{min-height:88px;border-radius:0;padding:0 40px}
+.chips{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.chip{min-height:40px;padding:0 18px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:14px;border-radius:2px;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--dtext);border-color:var(--ink)}
+.chips .lab{margin-right:8px}
+.chips .aside{margin-left:auto;font-size:14px;color:var(--text2)}
+@media (max-width:980px){.sform{grid-template-columns:1fr 1fr}.sfield{border-bottom:1px solid var(--line-soft)}.sform .btn{grid-column:1/-1;min-height:60px}.chips .aside{margin-left:0;flex-basis:100%}}
+@media (max-width:560px){.sform{grid-template-columns:1fr}.sfield{min-height:72px;border-right:0}}
+
+/* section heads */
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:32px 64px;margin-bottom:clamp(40px,5vw,72px);flex-wrap:wrap}
+.shead-t{display:flex;flex-direction:column;gap:20px;max-width:820px}
+.shead-r{display:flex;flex-direction:column;align-items:flex-start;gap:22px;max-width:400px;color:var(--text2)}
+.dark .shead-r{color:var(--dmute)}
+
+/* property cards */
+.pc{display:flex;flex-direction:column;gap:22px;text-decoration:none;color:var(--ink)}
+.ph{position:relative;overflow:hidden;background:var(--sunk);aspect-ratio:4/3}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.pc:hover .ph img,.tile:hover img,.dest:hover img{transform:scale(1.035)}
+.tag{position:absolute;top:18px;left:18px;padding:7px 11px;background:var(--paper);font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.pbody{display:flex;flex-direction:column;gap:10px}
+.pt{font-size:clamp(28px,2.4vw,36px);line-height:1.06}
+.meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:14px;color:var(--text2)}
+.meta i{width:3px;height:3px;border-radius:50%;background:var(--line)}
+.pdesc{font-size:15px;line-height:1.55;color:var(--text2);max-width:34em}
+.pfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:6px;padding-top:14px;border-top:1px solid var(--line)}
+.price{font-size:18px;font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.more{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+.feat-a{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:32px}
+.feat-a .pc:first-child .ph{aspect-ratio:auto;height:clamp(300px,40vw,560px)}
+.feat-a .pc:last-child .ph{aspect-ratio:auto;height:clamp(300px,40vw,560px)}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px 48px}
+@media (max-width:980px){.feat-a,.grid3{grid-template-columns:1fr 1fr}.feat-a .pc:first-child{grid-column:1/-1}}
+@media (max-width:640px){.feat-a,.grid3,.grid2{grid-template-columns:1fr;gap:48px}}
+
+/* destinations */
+.dgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:400px;gap:24px}
+.dgrid .big{grid-column:span 3;grid-row:auto}
+.dest,.tile{position:relative;display:block;overflow:hidden;background:var(--dark);color:var(--dtext);text-decoration:none}
+.dest img,.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.16,1,.3,1)}
+.dest::after,.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,13,12,0) 35%,rgba(14,13,12,.74) 100%)}
+.dcap{position:absolute;z-index:1;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
+.dcap strong{font-family:var(--serif);font-weight:500;font-size:34px;letter-spacing:.08em;line-height:1}
+.big .dcap strong{font-size:clamp(40px,4.5vw,60px)}
+.dcap p{font-size:14px;line-height:1.5;color:rgba(243,240,234,.92);max-width:28em}
+@media (max-width:980px){.dgrid{grid-template-columns:1fr 1fr;grid-auto-rows:360px}.dgrid .big{grid-column:1/-1}}
+@media (max-width:560px){.dgrid{grid-template-columns:1fr;grid-auto-rows:340px}}
+
+/* lifestyle */
+.lgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:420px;gap:24px}
+.s2{grid-column:span 2}
+.tile .dcap strong{letter-spacing:0;font-size:32px;line-height:1.05}
+.tile.s2 .dcap strong{font-size:40px}
+@media (max-width:980px){.lgrid{grid-template-columns:1fr 1fr;grid-auto-rows:340px}}
+@media (max-width:560px){.lgrid{grid-template-columns:1fr;grid-auto-rows:320px}.s2{grid-column:auto}}
+
+/* split */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.split-img{position:relative;min-height:420px;overflow:hidden}
+.split-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.split-img .cap{position:absolute;left:24px;bottom:22px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--dtext)}
+.split-txt{padding:var(--sec) var(--gut);display:flex;flex-direction:column;gap:24px;justify-content:center}
+.list2{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;border-bottom:1px solid var(--line)}
+.list2 div{display:flex;align-items:center;gap:14px;min-height:52px;border-top:1px solid var(--line)}
+.list2 div::before{content:"";width:6px;height:6px;background:var(--bronze);flex:none}
+.dark .list2,.dark .list2 div{border-color:rgba(243,240,234,.16)}
+.dark .list2 div::before{display:none}
+@media (max-width:900px){.split{grid-template-columns:1fr}.split-img{min-height:340px}}
+@media (max-width:460px){.list2{grid-template-columns:1fr}}
+
+/* visa table */
+.vt{border-top:0}
+.vr{display:grid;grid-template-columns:3fr 2.6fr 2fr 3.2fr 1.3fr;column-gap:32px;align-items:center;min-height:124px;padding-block:20px;border-bottom:1px solid var(--line)}
+.vr.headrow{min-height:0;padding-block:0 14px;border-bottom:1px solid var(--ink);margin-top:-1px;border-top:0}
+.vt .headrow{position:relative;top:0}
+.vr .n{font-family:var(--serif);font-size:30px;font-weight:500;line-height:1.08}
+.vr .d{color:var(--text2)}
+.vr .l{display:flex;justify-content:flex-end}
+.vr [data-l]::before{content:attr(data-l);display:none;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text2);margin-bottom:4px}
+.note{display:flex;gap:16px;align-items:baseline;margin-top:32px;max-width:900px;font-size:14px;color:var(--text2)}
+.note b{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);white-space:nowrap}
+@media (max-width:980px){.vr{grid-template-columns:1fr 1fr;row-gap:14px}.vr .n{grid-column:1/-1}.vr .d{grid-column:1/-1}.vr .l{justify-content:flex-start;grid-column:1/-1}.vr [data-l]::before{display:block}.vr.headrow{display:none}.vt{border-top:1px solid var(--ink)}}
+@media (max-width:520px){.vr{grid-template-columns:1fr}.note{flex-direction:column;gap:6px}}
+
+/* match */
+.match{display:grid;grid-template-columns:5fr 7fr;gap:clamp(48px,7vw,96px);align-items:start}
+.match-l{display:flex;flex-direction:column;gap:24px}
+.quiz{background:#fff;border:1px solid var(--line);padding:clamp(24px,3.5vw,48px);display:flex;flex-direction:column;gap:26px;box-shadow:0 18px 48px rgba(26,24,19,.08)}
+.qtop{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.prog{display:flex;gap:6px}.prog i{width:44px;height:2px;background:var(--line)}.prog i.on{background:var(--ink)}
+.qq{font-family:var(--serif);font-size:clamp(28px,2.6vw,36px);font-weight:500;line-height:1.1}
+.opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.opt{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:6px;min-height:104px;padding:16px 18px;text-align:left;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:2px;cursor:pointer;transition:background-color .25s,color .25s,border-color .25s}
+.opt b{font-size:17px;font-weight:500}.opt span{font-size:12px;line-height:1.4;color:var(--text2)}
+.opt[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--dtext)}
+.opt[aria-pressed="true"] span{color:#cfc8bd}
+.qfoot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:22px;border-top:1px solid var(--line-soft);flex-wrap:wrap}
+@media (max-width:980px){.match{grid-template-columns:1fr}.opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* private */
+.priv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.75fr)}
+.priv-txt{padding:var(--sec) var(--gut);display:flex;flex-direction:column;gap:26px}
+.priv h2{font-size:clamp(56px,7.5vw,104px);font-weight:400;line-height:.95}
+@media (max-width:900px){.priv{grid-template-columns:1fr}.priv .split-img{order:-1;min-height:300px}}
+
+/* insights */
+.ins{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:64px}
+.lead-art{display:flex;flex-direction:column;gap:22px;text-decoration:none}
+.lead-art .ph{aspect-ratio:3/2}
+.lead-art h3{font-size:clamp(34px,3.4vw,48px);line-height:1.04}
+.arts{display:flex;flex-direction:column;gap:22px}
+.art{display:grid;grid-template-columns:156px minmax(0,1fr);gap:24px;align-items:center;text-decoration:none;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.art .ph{aspect-ratio:auto;height:108px}
+.art h3{font-size:25px;line-height:1.15}
+@media (max-width:980px){.ins{grid-template-columns:1fr}}
+@media (max-width:460px){.art{grid-template-columns:110px minmax(0,1fr);gap:16px}.art .ph{height:84px}.art h3{font-size:21px}}
+
+/* final */
+.final{position:relative;min-height:clamp(520px,70vh,820px);display:flex;align-items:center;justify-content:center;text-align:center;color:var(--dtext);overflow:hidden;background:var(--dark)}
+.final>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.final::after{content:"";position:absolute;inset:0;background:rgba(14,13,12,.44)}
+.final-in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:26px;padding-block:96px}
+.final h2{font-size:clamp(52px,8.5vw,120px);font-weight:400;line-height:.95}
+.final p{font-size:clamp(16px,1.5vw,20px);max-width:640px;color:rgba(243,240,234,.92)}
+
+/* footer */
+.ftr{background:var(--dark);color:var(--dtext);padding-block:80px 32px;padding-bottom:calc(32px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:56px}
+.fgrid{display:grid;grid-template-columns:4fr 2fr 2fr 2fr 2fr;gap:40px}
+.fcol{display:flex;flex-direction:column;gap:14px}
+.fcol .lab{color:var(--bronze-l)}
+.fcol a{font-size:14px;text-decoration:none;opacity:.86}
+.fcol a:hover{opacity:1;text-decoration:underline}
+.fbot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 32px;padding-top:24px;border-top:1px solid rgba(243,240,234,.14);font-size:12px;color:var(--dmute)}
+@media (max-width:980px){.fgrid{grid-template-columns:1fr 1fr}.fgrid>:first-child{grid-column:1/-1}}
+
+/* listing page */
+.phead{padding-top:calc(88px + env(safe-area-inset-top,0px) + clamp(40px,5vw,64px));padding-bottom:48px;display:flex;flex-direction:column;gap:20px}
+.phead h1{font-size:clamp(44px,6.5vw,92px);line-height:1}
+.phead-row{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
+.fbar{display:flex;align-items:stretch;background:var(--paper);border-block:1px solid var(--line);flex-wrap:wrap}
+.fbar .sfield{min-height:96px;flex:1 1 170px;max-width:240px;border-bottom:0}
+.fbar-r{margin-left:auto;display:flex;align-items:center;gap:24px;padding:16px var(--gut) 16px 24px}
+.seg{display:flex;border:1px solid var(--ink)}
+.seg button{min-height:44px;padding:0 18px;border:0;background:transparent;color:var(--ink);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--dtext)}
+.sortb{display:flex;align-items:center;gap:8px;min-height:44px;background:transparent;border:0;font-size:14px;color:var(--ink);cursor:pointer}
+@media (max-width:980px){.fbar .sfield{max-width:none;flex-basis:45%;border-bottom:1px solid var(--line-soft)}.fbar-r{margin-left:0;width:100%;justify-content:space-between;padding-inline:var(--gut)}}
+.lcard{display:flex;flex-direction:column;gap:24px;text-decoration:none}
+.lcard .ph{aspect-ratio:10/7}
+.lrow{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+.lrow .r{display:flex;flex-direction:column;align-items:flex-end;gap:14px;padding-top:22px}
+.lrow .more{border-bottom:1px solid currentColor;padding-bottom:5px}
+@media (max-width:640px){.lrow{flex-direction:column;gap:14px}.lrow .r{flex-direction:row;align-items:center;justify-content:space-between;width:100%;padding-top:12px;border-top:1px solid var(--line)}}
+.endcta{margin-top:clamp(72px,8vw,112px);padding-top:48px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.mapview{display:grid;grid-template-columns:minmax(0,520px) minmax(0,1fr);min-height:760px;border-bottom:1px solid var(--line)}
+.mlist{overflow:auto;max-height:820px;padding:20px 20px 20px var(--gut);display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line)}
+.mini{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;padding:16px;text-decoration:none;border:1px solid transparent;border-bottom-color:var(--line)}
+.mini.on{background:#fff;border-color:var(--ink)}
+.mini .ph{aspect-ratio:auto;height:110px}
+.mini h3{font-size:24px;line-height:1.1}
+.map{position:relative;overflow:hidden;background:var(--sunk);min-height:600px}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{position:absolute;transform:translate(-50%,-50%);min-height:32px;padding:0 12px;background:#fff;color:var(--ink);border:1px solid var(--ink);font-size:13px;font-weight:500;cursor:pointer;box-shadow:0 4px 16px rgba(26,24,19,.12);font-variant-numeric:tabular-nums}
+.pin.on{background:var(--ink);color:var(--dtext)}
+.place{position:absolute;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text2)}
+.mapnote{position:absolute;left:20px;bottom:16px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2)}
+.zoom{position:absolute;right:20px;top:20px;display:flex;flex-direction:column;background:#fff;border:1px solid var(--line)}
+.zoom button{width:44px;height:44px;border:0;background:transparent;font-size:20px;color:var(--ink);cursor:pointer}
+.zoom button+button{border-top:1px solid var(--line)}
+@media (max-width:900px){.mapview{grid-template-columns:1fr}.mlist{max-height:none;border-right:0;padding-right:var(--gut);order:2}.map{min-height:480px}}
+@media (max-width:460px){.mini{grid-template-columns:110px minmax(0,1fr);gap:14px}.mini .ph{height:90px}}
+
+/* property detail */
+.gal{position:relative;height:clamp(520px,86vh,900px);background:var(--dark);overflow:hidden;color:var(--dtext)}
+.gal>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.gal::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,13,12,.5) 0%,rgba(14,13,12,0) 20%,rgba(14,13,12,0) 66%,rgba(14,13,12,.72) 100%);pointer-events:none}
+.gal-nav{position:absolute;top:50%;z-index:2;transform:translateY(-50%);width:56px;height:56px;display:flex;align-items:center;justify-content:center;background:rgba(14,13,12,.28);border:1px solid rgba(243,240,234,.5);color:var(--dtext);cursor:pointer}
+.gal-nav.prev{left:var(--gut)}.gal-nav.next{right:var(--gut)}
+.gal-bot{position:absolute;z-index:2;left:0;right:0;bottom:32px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.thumbs{display:flex;gap:10px;overflow-x:auto;max-width:100%;padding-bottom:2px}
+.thumbs button{flex:none;width:100px;height:66px;padding:0;overflow:hidden;background:var(--dark);border:1px solid rgba(243,240,234,.25);opacity:.75;cursor:pointer}
+.thumbs button img{width:100%;height:100%;object-fit:cover}
+.thumbs button[aria-current="true"]{border-color:var(--dtext);opacity:1}
+@media (max-width:640px){.gal-nav{width:44px;height:44px}.gal-bot .btns{display:none}}
+.ptitle{padding-top:72px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px 64px;flex-wrap:wrap}
+.ptitle h1{font-size:clamp(44px,6vw,88px);line-height:1}
+.ptitle .sub{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2vw,28px);line-height:1.3;color:var(--text2)}
+.pprice{display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+.pprice strong{font-family:var(--serif);font-weight:500;font-size:clamp(40px,4vw,56px);line-height:1;font-variant-numeric:tabular-nums}
+@media (max-width:760px){.pprice{align-items:flex-start}}
+.facts{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin-top:48px;border-top:1px solid var(--ink);border-bottom:1px solid var(--line)}
+.facts div{display:flex;flex-direction:column;gap:8px;padding:24px 20px;border-left:1px solid var(--line)}
+.facts div:first-child{border-left:0;padding-left:0}
+.facts b{font-weight:400;font-size:21px}
+@media (max-width:980px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}.facts div:nth-child(4){border-left:0;padding-left:0}.facts div:nth-child(n+4){border-top:1px solid var(--line)}}
+@media (max-width:520px){.facts{grid-template-columns:1fr 1fr}.facts div{padding-left:0!important;border-left:0!important;border-top:1px solid var(--line)}.facts div:nth-child(-n+2){border-top:0}}
+.ov{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(48px,7vw,112px);align-items:start}
+.ov-lead{font-family:var(--serif);font-size:clamp(26px,2.5vw,34px);line-height:1.3}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.two h3,.h3{font-size:30px}
+.card{background:var(--paper);border:1px solid var(--line);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column;gap:20px;position:sticky;top:calc(88px + env(safe-area-inset-top,0px) + 24px)}
+.card .btn{width:100%}
+.adv{display:flex;align-items:center;gap:16px}
+.adv i{width:64px;height:64px;background:var(--sunk);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;font-style:normal;color:var(--text2)}
+@media (max-width:980px){.ov{grid-template-columns:1fr}.card{position:static}}
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:340px 340px;gap:16px}
+.mosaic div{overflow:hidden}.mosaic img{width:100%;height:100%;object-fit:cover}
+.mosaic div:first-child{grid-row:span 2}
+@media (max-width:760px){.mosaic{grid-template-columns:1fr 1fr;grid-template-rows:260px 200px 200px}.mosaic div:first-child{grid-column:1/-1;grid-row:auto}}
+.two-col{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(40px,7vw,112px)}
+.two-col.c57{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}.two-col.c11{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.ofacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ofacts div{display:flex;flex-direction:column;gap:10px;padding-top:22px;border-top:1px solid var(--line)}
+.ofacts b{font-weight:400;font-size:18px}
+@media (max-width:900px){.two-col,.two-col.c57,.two-col.c11{grid-template-columns:1fr}}
+@media (max-width:560px){.ofacts{grid-template-columns:1fr}}
+.near div{display:grid;grid-template-columns:170px minmax(0,1fr);align-items:center;gap:16px;min-height:54px;padding-block:10px;border-top:1px solid var(--line);font-size:15px}
+.near{border-bottom:1px solid var(--line)}
+@media (max-width:460px){.near div{grid-template-columns:1fr;gap:4px}}
+.nmap{position:relative;min-height:480px;background:#e7e3dc;overflow:hidden}
+.nmap svg{position:absolute;inset:0;width:100%;height:100%}
+.npin{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
+.npin b{padding:10px 14px;background:var(--ink);color:var(--dtext);font-size:13px;font-weight:500;white-space:nowrap}
+.npin i{width:12px;height:12px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 8px rgba(20,18,16,.12)}
+.crit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.crit>div{background:var(--dcard);border:1px solid rgba(243,240,234,.08);padding:32px;display:flex;flex-direction:column;gap:16px}
+.crit h3{font-family:var(--sans);font-size:19px;font-weight:500;letter-spacing:0}
+.rate{display:flex;align-items:center;gap:14px}
+.bars{display:flex;gap:4px}.bars i{width:28px;height:3px;background:rgba(243,240,234,.18)}.bars i.on{background:var(--bronze-l)}
+.rate span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze-l)}
+.crit p{font-size:15px;color:var(--dmute)}
+@media (max-width:980px){.crit{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.crit{grid-template-columns:1fr}}
+
+/* bangkok / residency */
+.facts4{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.facts4 div,.suits div,.steps div{display:flex;flex-direction:column;gap:10px;padding-top:22px;border-top:1px solid var(--ink)}
+.facts4 h3,.suits h3{font-size:28px;line-height:1.1}
+.facts4 p,.suits p,.steps p{font-size:15px;color:var(--text2)}
+.hood{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.5fr);gap:16px 40px;padding-block:26px;border-top:1px solid var(--line)}
+.hood h3{font-size:38px;line-height:1}
+.hood .bf{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+.hoods{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(40px,6vw,80px)}
+.hoods .split-img{min-height:auto;height:100%;max-height:820px}
+.also{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 28px;margin-top:24px;background:var(--sunk);flex-wrap:wrap}
+@media (max-width:900px){.hoods{grid-template-columns:1fr}.hoods .split-img{height:360px}}
+@media (max-width:560px){.hood{grid-template-columns:1fr}.facts4{grid-template-columns:1fr}}
+.ess{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.ess>div{display:flex;flex-direction:column;gap:18px}
+.ess .ph{aspect-ratio:auto;height:300px}
+.ess .txtph{height:300px;background:var(--sunk);padding:32px;display:flex;align-items:flex-end;font-family:var(--serif);font-size:30px;line-height:1.15}
+.ess .names{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;line-height:1.8}
+.ess p{font-size:15px;color:var(--text2)}
+.suits,.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px}
+.steps span{font-family:var(--serif);font-size:56px;line-height:1;color:var(--bronze)}
+.steps h3{font-size:28px;line-height:1.1}
+@media (max-width:980px){.ess,.suits,.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.ess,.suits,.steps{grid-template-columns:1fr}}
+.princ>div{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:16px 32px;padding-block:26px;border-top:1px solid var(--line)}
+.princ{border-bottom:1px solid var(--line)}
+.princ h3{font-size:26px;line-height:1.15}
+.princ p{font-size:15px;color:var(--text2)}
+.statement{font-family:var(--serif);font-size:clamp(30px,3vw,42px);line-height:1.22}
+@media (max-width:560px){.princ>div{grid-template-columns:1fr}}
+.pw{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.pw article{background:#fff;border:1px solid var(--line);padding:clamp(24px,3vw,40px);display:flex;flex-direction:column}
+.pw h3{font-size:36px;line-height:1.05;margin-top:16px}
+.pw .dek{margin:12px 0 22px;font-size:15px;color:var(--text2)}
+.pw .row{display:flex;flex-direction:column;gap:6px;padding-block:14px;border-top:1px solid var(--line-soft);font-size:15px;line-height:1.5}
+.pw .row small{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text2)}
+.pw .tl{margin-top:auto;align-self:flex-start}
+.pw .go{margin-top:auto;padding-top:20px}
+@media (max-width:980px){.pw{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.pw{grid-template-columns:1fr}}
+.disc{padding:22px 24px;border:1px solid rgba(243,240,234,.2);max-width:720px;font-size:13px;line-height:1.65;color:var(--dmute)}
+.disc b{color:var(--dtext);font-weight:500}
+.ctaband{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px 96px}
+@media (max-width:900px){.ctaband{grid-template-columns:1fr}}
+
+[hidden]{display:none!important}
+.page-enter{animation:fade .6s cubic-bezier(.16,1,.3,1)}
+@keyframes fade{from{opacity:.4}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* v2: dropdown nav */
+.nav{gap:26px;align-items:center}
+.dd{position:relative}
+.dd>a{display:inline-flex;align-items:center;gap:6px}
+.dd-panel{position:absolute;top:calc(100% + 14px);left:-22px;min-width:250px;padding:12px 0;background:var(--paper);color:var(--ink);border:1px solid var(--line-soft);box-shadow:0 18px 48px rgba(26,24,19,.14);display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .25s,transform .25s,visibility .25s}
+.dd-panel::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
+.dd:hover .dd-panel,.dd:focus-within .dd-panel{opacity:1;visibility:visible;transform:none}
+.dd-panel a{padding:9px 22px;font-size:14px;border:0!important;white-space:nowrap}
+.dd-panel a:hover{background:var(--sunk)}
+@media (max-width:1180px){.nav{display:none}}
+.mgrp{border-bottom:1px solid rgba(243,240,234,.14);padding-block:10px}
+.mgrp .mtop{font-family:var(--serif);font-size:32px;line-height:1.1;padding:6px 0;display:block;text-decoration:none}
+.msub{display:flex;flex-wrap:wrap;gap:6px 18px;padding:4px 0 6px}
+.msub a{font-size:14px;color:var(--dmute);text-decoration:none;padding:4px 0}
+.fdisc{font-size:13px;line-height:1.65;color:var(--dmute);max-width:900px}
+
+/* path diagram */
+.path{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;position:relative}
+.step{position:relative;padding:28px 24px 28px 0;display:flex;flex-direction:column;gap:12px}
+.step .dot{width:14px;height:14px;border-radius:50%;background:var(--ink);position:relative;z-index:1}
+.step.maybe .dot{background:var(--paper);border:1.5px dashed var(--ink)}
+.step::before{content:"";position:absolute;top:34px;left:14px;right:0;height:1px;background:var(--ink)}
+.step:last-child::before{display:none}
+.step.gap::before{background:none;border-top:1.5px dashed var(--text2)}
+.step h3{font-size:clamp(22px,2vw,28px);line-height:1.1}
+.step p{font-size:14px;color:var(--text2)}
+.step .who{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze)}
+.step .link{position:absolute;top:10px;left:34px;right:14px;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);white-space:normal;line-height:1.3}
+.pathnote{margin-top:28px;padding:20px 24px;background:var(--paper);border:1px solid var(--line);display:flex;gap:16px;align-items:baseline;max-width:980px}
+.pathnote b{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);white-space:nowrap}
+.dark .pathnote{background:var(--dcard);border-color:rgba(243,240,234,.14)}
+@media (max-width:900px){.path{grid-template-columns:minmax(0,1fr)}.step{min-width:0}.step{padding:0 0 30px 34px}.step .dot{position:absolute;left:0;top:6px}.step::before{top:20px;bottom:0;left:6.5px;right:auto;width:1px;height:auto}.step.gap::before{border-top:0;border-left:1.5px dashed var(--text2);width:0}.step .link{position:static;order:5}.pathnote{flex-direction:column;gap:6px}}
+
+/* three-way truth */
+.truth{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.truth>div{padding:32px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.truth h3{font-size:34px}
+.truth .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze)}
+.truth p{font-size:15px;color:var(--text2)}
+@media (max-width:900px){.truth{grid-template-columns:1fr}}
+
+/* matrix table */
+.tablewrap{overflow-x:auto;border-top:1px solid var(--ink);-webkit-overflow-scrolling:touch}
+table.mx{border-collapse:collapse;min-width:1180px;width:100%;font-size:14px;line-height:1.5}
+.mx th{text-align:left;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);padding:14px 14px 12px 0;border-bottom:1px solid var(--ink);vertical-align:bottom}
+.mx td{padding:18px 14px 18px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.mx td:first-child{font-family:var(--serif);font-size:21px;font-weight:500;line-height:1.15;min-width:190px}
+.mx tr.grp td{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze);padding:22px 0 8px;border-bottom:1px solid var(--line)}
+.conf{display:inline-block;padding:3px 7px;font-family:var(--mono);font-size:10px;letter-spacing:.1em;border:1px solid currentColor}
+.conf.h{color:#2f5d46}.conf.m{color:#8a5a14}.conf.l{color:#8f2f2f}
+.yes{color:#2f5d46;font-weight:500}.no{color:var(--text2)}
+.scrollhint{font-size:13px;color:var(--text2);margin-top:12px}
+
+/* doc sections */
+.doc{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(32px,6vw,96px)}
+.doc-side{display:flex;flex-direction:column;gap:16px}
+.doc-main{display:flex;flex-direction:column;gap:22px;max-width:760px}
+.doc-main p{color:var(--text2)}
+.doc-main h3{font-size:28px;margin-top:10px}
+.facts-list{border-top:1px solid var(--line)}
+.facts-list div{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:8px 24px;padding-block:14px;border-bottom:1px solid var(--line);font-size:15px}
+.facts-list dt,.facts-list .k{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);padding-top:3px}
+.callout{padding:22px 24px;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;gap:8px}
+.callout b.t{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--bronze)}
+.callout.warn{border-color:#c9a27a;background:#fbf6ef}
+.callout.stop{border-color:#b86b6b;background:#fbf1f0}
+.callout.stop b.t{color:#8f2f2f}
+.callout p{color:var(--ink)!important;font-size:15px}
+.ticks-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.ticks-list li{list-style:none;padding:12px 0 12px 28px;border-bottom:1px solid var(--line);position:relative;font-size:15px;color:var(--ink)}
+.ticks-list li::before{content:"";position:absolute;left:4px;top:20px;width:9px;height:5px;border-left:1.5px solid var(--bronze);border-bottom:1.5px solid var(--bronze);transform:rotate(-45deg)}
+.ticks-list.q li::before{content:"?";border:0;transform:none;top:11px;left:5px;font-family:var(--mono);font-size:13px;color:#8a5a14;width:auto;height:auto}
+.ticks-list.x li::before{content:"×";border:0;transform:none;top:9px;left:4px;font-size:17px;color:#8f2f2f;width:auto;height:auto}
+ul.ticks-list{margin:0;padding:0}
+@media (max-width:900px){.doc{grid-template-columns:1fr}}
+@media (max-width:520px){.facts-list div{grid-template-columns:1fr}}
+
+/* sources */
+.src{width:100%;border-collapse:collapse;font-size:13px;min-width:760px}
+.src th{text-align:left;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);padding:10px 12px 10px 0;border-bottom:1px solid var(--ink)}
+.src td{padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top}
+.src a{color:var(--ink)}
+
+/* nationality */
+.nat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.nat>div{display:flex;flex-direction:column;gap:14px;padding-top:22px;border-top:1px solid var(--ink)}
+.nat h3{font-size:30px;line-height:1.05}
+.nat ul{margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.nat li{list-style:none;font-size:14px;color:var(--text2);padding-left:14px;position:relative}
+.nat li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;background:var(--bronze)}
+.dark .nat>div{border-color:rgba(243,240,234,.4)}
+.dark .nat li{color:var(--dmute)}
+@media (max-width:980px){.nat{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.nat{grid-template-columns:1fr}}
+
+/* assessment */
+.assess{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,5vw,72px);align-items:start}
+.aform{background:#fff;border:1px solid var(--line);padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:22px;position:sticky;top:calc(88px + env(safe-area-inset-top,0px) + 20px)}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{display:flex;flex-direction:column;gap:8px}
+.fld label,.fld .lab{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text2)}
+.fld select,.fld input{appearance:none;-webkit-appearance:none;width:100%;min-height:48px;padding:0 14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;border-radius:2px}
+.fld select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23141210' stroke-width='1.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.fld.full{grid-column:1/-1}
+.results{display:flex;flex-direction:column;gap:20px}
+.route{background:#fff;border:1px solid var(--line);padding:clamp(22px,3vw,34px);display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 22px}
+.route .rk{font-family:var(--serif);font-size:44px;line-height:1;color:var(--bronze)}
+.route h3{font-size:30px;line-height:1.1}
+.route .fit{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text2)}
+.meter{width:90px;height:3px;background:var(--line-soft);position:relative}.meter i{position:absolute;left:0;top:0;bottom:0;background:var(--ink)}
+.route .body{grid-column:2;display:flex;flex-direction:column;gap:10px;font-size:15px}
+.route .body p{color:var(--text2)}
+.route .need{font-size:14px}
+.route .need b{font-weight:500}
+.notes{display:flex;flex-direction:column;gap:12px}
+.recs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.recs .pc .pt{font-size:24px}
+.recs .pdesc{display:none}
+@media (max-width:980px){.assess{grid-template-columns:1fr}.aform{position:static}.recs{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.fg{grid-template-columns:1fr}.recs{grid-template-columns:1fr}.route{grid-template-columns:1fr}.route .body{grid-column:auto}}
+.consult{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
+@media (max-width:760px){.consult{grid-template-columns:1fr}}
+.ok{padding:16px 18px;border:1px solid #2f5d46;color:#2f5d46;font-size:14px;background:#f1f6f2}
+
+/* packages */
+.pk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.pk article{background:#fff;border:1px solid var(--line);padding:30px;display:flex;flex-direction:column;gap:14px}
+.pk article.hl{background:var(--dark);color:var(--dtext);border-color:var(--dark)}
+.pk h3{font-size:30px;line-height:1.05}
+.pk .for{font-size:14px;color:var(--text2)}
+.pk .hl .for,.pk .hl li{color:var(--dmute)}
+.pk ul{margin:0;padding:0;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--line);padding-top:14px}
+.pk .hl ul{border-color:rgba(243,240,234,.16)}
+.pk li{list-style:none;font-size:14px;color:var(--text2)}
+.pk .fee{margin-top:auto;padding-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:1100px){.pk{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.pk{grid-template-columns:1fr}}
+.roles{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+.roles th{text-align:left;font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);padding:12px 16px 12px 0;border-bottom:1px solid var(--ink)}
+.roles td{padding:14px 16px 14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+
+/* guides */
+.gd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.gd a{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 24px;padding-block:26px;border-top:1px solid var(--line);text-decoration:none}
+.gd h3{font-size:30px;line-height:1.1}
+.gd p{grid-column:1;font-size:15px;color:var(--text2)}
+.gd .ans{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);grid-column:1}
+.gd svg{grid-row:1/span 3;grid-column:2;align-self:center}
+@media (max-width:760px){.gd{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header class="hdr"><div class="hdr-in wrap">
+<a class="logo" href="#home" aria-label="Luxury Thai Life, home"><b>Luxury Thai Life</b><span>Property · Residency · Relocation</span></a>
+<nav class="nav" aria-label="Primary"><div class="dd"><a href="#properties" data-nav="properties" aria-haspopup="true">Buy Property<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd-panel"><a href="#bangkok">Bangkok</a><a href="#properties">Phuket</a><a href="#properties">Koh Samui</a><a href="#properties">Hua Hin</a><a href="#properties">Pattaya</a><a href="#properties">Chiang Mai</a><a href="#ownership">What foreigners can own</a></div></div><div class="dd"><a href="#live" data-nav="live" aria-haspopup="true">Live in Thailand<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd-panel"><a href="#matrix">Compare long-stay options</a><a href="#ltr">Long-Term Resident (LTR)</a><a href="#privilege">Thailand Privilege</a><a href="#retirement">Retirement</a><a href="#business">Business &amp; work</a><a href="#family">Family</a><a href="#pr">Permanent Residence</a><a href="#citizenship">Citizenship: the facts</a></div></div><div class="dd"><a href="#relocate" data-nav="relocate" aria-haspopup="true">Relocate<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a><div class="dd-panel"><a href="#schools">Schools</a><a href="#healthcare">Healthcare</a><a href="#banking">Banking &amp; moving money</a><a href="#tax">Tax residency</a><a href="#nationality">Advice by nationality</a></div></div><div class="dd"><a href="#guides" data-nav="guides">Guides</a></div><div class="dd"><a href="#private" data-nav="private">Private Client</a></div></nav>
+<a class="btn ghost sm hdr-cta" href="#assessment">Residency Assessment</a>
+<button class="menu-btn" type="button" id="menu-open" aria-label="Open menu" aria-expanded="false"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 8h18"/><path d="M3 16h18"/></svg></button>
+</div></header>
+<div class="mnav" id="mnav" hidden>
+<div class="mnav-top"><span class="logo"><b>Luxury Thai Life</b></span><button class="menu-btn" style="display:inline-flex" type="button" id="menu-close" aria-label="Close menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg></button></div>
+<nav aria-label="Mobile"><div class="mgrp"><a class="mtop" href="#properties">Buy Property</a><div class="msub"><a href="#bangkok">Bangkok</a><a href="#properties">Phuket</a><a href="#properties">Koh Samui</a><a href="#properties">Hua Hin</a><a href="#properties">Pattaya</a><a href="#properties">Chiang Mai</a><a href="#ownership">What foreigners can own</a></div></div><div class="mgrp"><a class="mtop" href="#live">Live in Thailand</a><div class="msub"><a href="#matrix">Compare long-stay options</a><a href="#ltr">Long-Term Resident (LTR)</a><a href="#privilege">Thailand Privilege</a><a href="#retirement">Retirement</a><a href="#business">Business &amp; work</a><a href="#family">Family</a><a href="#pr">Permanent Residence</a><a href="#citizenship">Citizenship: the facts</a></div></div><div class="mgrp"><a class="mtop" href="#relocate">Relocate</a><div class="msub"><a href="#schools">Schools</a><a href="#healthcare">Healthcare</a><a href="#banking">Banking &amp; moving money</a><a href="#tax">Tax residency</a><a href="#nationality">Advice by nationality</a></div></div><div class="mgrp"><a class="mtop" href="#guides">Guides</a></div><div class="mgrp"><a class="mtop" href="#private">Private Client</a></div></nav>
+<a class="btn light" href="#assessment">Start Residency Assessment</a>
+</div>
+<main data-page="home" data-hero>
+<section class="hero"><img src="img/hero.jpg" alt="Infinity pool terrace overlooking a tropical bay">
+<div class="hero-in wrap"><div class="hero-copy"><div class="eb light">Private property &amp; relocation advisory · Thailand</div><h1 class="display">Find Your Home.<br>Build Your Life in Thailand.</h1><p>Exceptional homes, long-term stay guidance and private relocation advisory for international clients.</p><div class="btns"><a class="btn light" href="#properties">Explore Properties</a><a class="btn ghost" href="#assessment">Start Residency Assessment</a></div></div>
+<div class="hero-side"><div class="ticks"><i></i><i></i><i></i><i></i></div>Andaman coast · Oceanfront living</div></div></section>
+
+<section class="search wrap bg-paper" aria-label="Property search">
+<form class="sform" id="home-search"><button class="sfield" type="button"><small>Location</small><span>All of Thailand<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Property Type</small><span>Villa, residence or land<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Price Range</small><span>฿30M to ฿200M+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Bedrooms</small><span>Any<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="btn" type="submit">View Properties<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></button></form>
+<div class="chips"><span class="lab">Lifestyle</span><button class="chip" type="button" aria-pressed="true">City</button><button class="chip" type="button" aria-pressed="false">Beachfront</button><button class="chip" type="button" aria-pressed="false">Family</button><button class="chip" type="button" aria-pressed="false">Golf</button><button class="chip" type="button" aria-pressed="false">Retirement</button><button class="chip" type="button" aria-pressed="false">Investment</button><a class="aside" href="#assessment">Not sure where to start? Take the residency assessment</a></div>
+</section>
+
+<section class="sec wrap bg-ivory"><div class="shead"><div class="shead-t"><div class="eb ">Featured residences</div><h2 class="h2">Exceptional Residences</h2></div><div class="shead-r"><p>A curated selection, not a catalogue. Every residence is visited and vetted by our advisors before it is shown to a client.</p><a class="tl" href="#properties">View all residences<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div>
+<div class="feat-a"><a class="pc" href="#residence"><div class="ph"><img src="img/g_living.jpg" alt="The Gentry Phatthanakan" loading="lazy"><span class="tag">Exclusive</span></div><div class="pbody"><div class="eb mute">Bangkok · Phatthanakan</div><h3 class="pt">The Gentry Phatthanakan</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>6 Bathrooms</span><i></i><span>550 sqm</span></div><p class="pdesc">A fully furnished three-storey villa with double-height living, private lift, spa room and a water garden. One of 34 homes.</p><div class="pfoot"><span class="price">฿85,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="pc" href="#residence"><div class="ph"><img src="img/r32_pool.jpg" alt="32 Residence, Plot 4" loading="lazy"><span class="tag">Ready to decorate</span></div><div class="pbody"><div class="eb mute">Bangkok · Phatthanakan</div><h3 class="pt">32 Residence, Plot 4</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>658 sqm</span><i></i><span>Pool</span></div><p class="pdesc">A courtyard pool house with lift, delivered ready to decorate to your own brief.</p><div class="pfoot"><span class="price">฿75,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a></div>
+<div class="grid3" style="margin-top:64px"><a class="pc" href="#residence"><div class="ph"><img src="img/river_res.jpg" alt="The Residences at Chao Phraya" loading="lazy"></div><div class="pbody"><div class="eb mute">Bangkok · Riverside</div><h3 class="pt">The Residences at Chao Phraya</h3><div class="meta"><span>3 Bedrooms</span><i></i><span>312 sqm</span></div><p class="pdesc">Riverfront residence overlooking Bangkok.</p><div class="pfoot"><span class="price">฿95,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="pc" href="#residence"><div class="ph"><img src="img/villa_pk.jpg" alt="Villa Andaman Crest" loading="lazy"></div><div class="pbody"><div class="eb mute">Phuket · Kamala</div><h3 class="pt">Villa Andaman Crest</h3><div class="meta"><span>6 Bedrooms</span><i></i><span>980 sqm</span></div><p class="pdesc">Clifftop villa with sunset views across the Andaman Sea.</p><div class="pfoot"><span class="price">฿168,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="pc" href="#residence"><div class="ph"><img src="img/villa_sm.jpg" alt="Baan Sila" loading="lazy"></div><div class="pbody"><div class="eb mute">Koh Samui · Choeng Mon</div><h3 class="pt">Baan Sila</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>540 sqm</span></div><p class="pdesc">Garden villa a short walk from a quiet northern bay.</p><div class="pfoot"><span class="price">฿62,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a></div></section>
+
+<section class="sec wrap bg-sunk"><div class="shead"><div class="shead-t"><div class="eb ">Destinations</div><h2 class="h2">Where in Thailand fits your life?</h2></div><div class="shead-r"><p>Six places our clients most often call home, each with a different rhythm, community and kind of property.</p><a class="tl" href="#bangkok">All destinations<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div>
+<div class="dgrid"><a class="dest big" href="#bangkok"><img src="img/bkk.jpg" alt="Bangkok" loading="lazy"><div class="dcap"><strong>BANGKOK</strong><p>Global city living, international schools, world-class healthcare and dining.</p><span class="tl" style="align-self:flex-start;margin-top:6px">Explore Bangkok<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a><a class="dest" href="#bangkok"><img src="img/phuket.jpg" alt="Phuket" loading="lazy"><div class="dcap"><strong>PHUKET</strong><p>Oceanfront villas, marinas and an established international community.</p></div></a><a class="dest" href="#bangkok"><img src="img/samui.jpg" alt="Koh Samui" loading="lazy"><div class="dcap"><strong>KOH SAMUI</strong><p>Island privacy, calm bays and a slower, residential rhythm.</p></div></a><a class="dest" href="#bangkok"><img src="img/chiangmai.jpg" alt="Chiang Mai" loading="lazy"><div class="dcap"><strong>CHIANG MAI</strong><p>Mountain air, gardens, culture and a gentler pace of life.</p></div></a><a class="dest" href="#bangkok"><img src="img/huahin.jpg" alt="Hua Hin" loading="lazy"><div class="dcap"><strong>HUA HIN</strong><p>A classic seaside town with golf and easy weekends from Bangkok.</p></div></a><a class="dest" href="#bangkok"><img src="img/pattaya.jpg" alt="Pattaya" loading="lazy"><div class="dcap"><strong>PATTAYA</strong><p>Marinas, sea-view residences and quick access to the Eastern Seaboard.</p></div></a></div></section>
+
+<section class="sec wrap bg-ivory"><div class="shead"><div class="shead-t"><div class="eb ">Lifestyle</div><h2 class="h2">Find Your Thailand</h2></div><div class="shead-r"><p>Start with how you want to live. The right city, coast or community usually follows.</p><a class="tl" href="#properties">Explore by lifestyle<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div>
+<div class="lgrid"><a class="tile s2" href="#properties"><img src="img/r32_living.jpg" alt="Bangkok City Living" loading="lazy"><div class="dcap"><div class="eb light">City</div><strong>Bangkok City Living</strong><p>Skyline residences, ten minutes from everything.</p></div></a><a class="tile" href="#properties"><img src="img/beach.jpg" alt="Beachfront Living" loading="lazy"><div class="dcap"><div class="eb light">Coast</div><strong>Beachfront Living</strong><p>Sand, sea and a front row to the sunset.</p></div></a><a class="tile" href="#properties"><img src="img/family.jpg" alt="Family &amp; International Schools" loading="lazy"><div class="dcap"><div class="eb light">Family</div><strong>Family &amp; International Schools</strong><p>Homes chosen around the school run.</p></div></a><a class="tile" href="#properties"><img src="img/retire.jpg" alt="Retirement" loading="lazy"><div class="dcap"><div class="eb light">Retirement</div><strong>Retirement</strong><p>Healthcare, warmth and an easier pace.</p></div></a><a class="tile" href="#properties"><img src="img/golf.jpg" alt="Golf Communities" loading="lazy"><div class="dcap"><div class="eb light">Golf</div><strong>Golf Communities</strong><p>Fairway homes in Hua Hin, Pattaya and Phuket.</p></div></a><a class="tile s2" href="#properties"><img src="img/wellness.jpg" alt="Wellness &amp; Privacy" loading="lazy"><div class="dcap"><div class="eb light">Wellness</div><strong>Wellness &amp; Privacy</strong><p>Gardens, spas and complete discretion.</p></div></a><a class="tile s2" href="#properties"><img src="img/invest.jpg" alt="Investment Properties" loading="lazy"><div class="dcap"><div class="eb light">Investment</div><strong>Investment Properties</strong><p>Assessed for yield, liquidity and exit, not only for looks.</p></div></a><a class="tile s2" href="#properties"><img src="img/branded.jpg" alt="Branded Residences" loading="lazy"><div class="dcap"><div class="eb light">Branded</div><strong>Branded Residences</strong><p>Hotel-level service, at home.</p></div></a></div></section>
+
+<section class="split bg-paper"><div class="split-img"><img src="img/g_garden.jpg" alt="Outdoor living terrace beside a water garden" loading="lazy"><span class="cap">The Gentry Phatthanakan · Bangkok</span></div>
+<div class="split-txt"><div class="eb ">Beyond the purchase</div><h2 class="h2" style="font-size:clamp(38px,4.2vw,60px)">Buying the home is only part of the move.</h2><p class="lead">Living in Thailand long term involves more than choosing a property. Our advisory service helps international clients understand their options around:</p><div class="list2"><div>Long-term stay</div><div>Relocation</div><div>Property ownership</div><div>Schools</div><div>Healthcare</div><div>Lifestyle</div><div>Investment considerations</div></div><div><a class="btn" href="#live">Explore Long-Term Stay Options</a></div></div></section>
+
+<section class="sec wrap bg-sunk" id="path-sec"><div class="shead"><div class="shead-t"><div class="eb ">How it fits together</div><h2 class="h2">Property, then residency. Never one for the other.</h2></div><div class="shead-r"><p>The honest sequence for international clients who want to build a life here. We help at every stage, and we are clear about what no one can promise.</p><a class="tl" href="#matrix">Compare long-stay options<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div>
+<div class="path"><div class="step "><span class="dot"></span><div class="who">Your decision</div><h3>Property purchase</h3><p>A home you own or lease, bought with independent legal due diligence.</p><span class="link">Separate application</span></div><div class="step "><span class="dot"></span><div class="who">Immigration Bureau · BOI for LTR</div><h3>Long-term visa</h3><p>Its own application. Property can support the LTR investment test; it never grants a visa.</p><span class="link">Conditions must be maintained</span></div><div class="step gap"><span class="dot"></span><div class="who">You</div><h3>Life &amp; business in Thailand</h3><p>Years of lawful stay, tax filings, work, schooling and community.</p><span class="link">Discretionary · not automatic</span></div><div class="step maybe gap"><span class="dot"></span><div class="who">Immigration Bureau · discretionary</div><h3>Possible Permanent Residence</h3><p>Usually after 3 years of qualifying extensions, within an annual quota. Not guaranteed.</p><span class="link">Discretionary · not automatic</span></div><div class="step maybe"><span class="dot"></span><div class="who">Ministry of Interior · discretionary</div><h3>Possible naturalisation</h3><p>Usually after years as a permanent resident, with Thai language and tax history. Not guaranteed.</p></div></div><div class="pathnote"><b>Important</b><p>Buying property does not, by itself, grant a visa, permanent residence or citizenship. Each stage after the purchase is a separate application decided by the Thai authorities.</p></div>
+<div class="vr headrow" style="margin-top:72px"><span class="lab">Pathway</span><span class="lab">Best suited for</span><span class="lab">Typical stay profile</span><span class="lab">In brief</span><span></span></div>
+<div class="vt"><div class="vr"><div class="n">Long-Term Resident (LTR)</div><div data-l="Best suited for">Wealthy global citizens, pensioners 50+, remote professionals, specialists</div><div data-l="Typical stay profile">10 years (5 + 5)</div><div class="d">A BOI programme. Wealthy applicants can meet the Thai-investment test partly through property.</div><div class="l"><a class="tl" href="#ltr">Learn More<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div><div class="vr"><div class="n">Thailand Privilege</div><div data-l="Best suited for">Frequent visitors, second-home owners</div><div data-l="Typical stay profile">Membership, 5 to 20 years</div><div class="d">A paid membership from THB 650,000. Simple, but not linked to property.</div><div class="l"><a class="tl" href="#privilege">Learn More<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div><div class="vr"><div class="n">Retirement (O-A, O-X)</div><div data-l="Best suited for">Clients aged 50 and over</div><div data-l="Typical stay profile">1 year renewable, or 10 years (O-X)</div><div class="d">Deposit or income tests plus health insurance. O-X is open to 14 nationalities.</div><div class="l"><a class="tl" href="#retirement">Learn More<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div><div class="vr"><div class="n">Business &amp; work</div><div data-l="Best suited for">Founders, executives, employees</div><div data-l="Typical stay profile">Linked to the job or company</div><div class="d">Non-B visa with a work permit; BOI and specialist routes for targeted sectors.</div><div class="l"><a class="tl" href="#business">Learn More<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div><div class="vr"><div class="n">Family</div><div data-l="Best suited for">Spouses of Thai nationals, dependants</div><div data-l="Typical stay profile">Typically annual, renewable</div><div class="d">Stays built on a family relationship; also a recognised category for permanent residence.</div><div class="l"><a class="tl" href="#family">Learn More<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div></div>
+<div class="note"><b>Please note</b><p>Eligibility depends on individual circumstances and current regulations. Rules last reviewed 24 September 2026.</p></div>
+</section>
+
+<section class="sec wrap bg-ivory"><div class="match"><div class="match-l"><div class="eb ">Your Thailand Plan</div><h2 class="h2">Not sure where to live?</h2><p class="lead">Tell us how you want to live and we'll help narrow down the locations, homes and long-term stay options worth exploring.</p><div><a class="btn" href="#assessment">Build My Thailand Plan</a></div><p class="muted" style="font-size:14px">Four short questions. Reviewed personally by an advisor.</p></div>
+<div class="quiz"><div class="qtop"><span class="lab">Step 1 of 4</span><div class="prog"><i class="on"></i><i></i><i></i><i></i></div></div><div><div class="qq">How do you imagine living in Thailand?</div><p class="muted" style="font-size:14px;margin-top:8px">Choose as many as you like. <span id="q-count" style="color:var(--ink)">3 selected</span></p></div><div class="opts" id="opts"><button class="opt" type="button" aria-pressed="true"><b>City</b><span>Skyline, dining, energy</span></button><button class="opt" type="button" aria-pressed="false"><b>Beach</b><span>Sea views, slower days</span></button><button class="opt" type="button" aria-pressed="true"><b>Family</b><span>Schools and space</span></button><button class="opt" type="button" aria-pressed="false"><b>Retirement</b><span>Healthcare and ease</span></button><button class="opt" type="button" aria-pressed="false"><b>Investment</b><span>Yield and long-term value</span></button><button class="opt" type="button" aria-pressed="false"><b>Golf</b><span>Fairways on the doorstep</span></button><button class="opt" type="button" aria-pressed="false"><b>Wellness</b><span>Privacy, nature, calm</span></button><button class="opt" type="button" aria-pressed="true"><b>Second Home</b><span>A few months a year</span></button></div><div class="qfoot"><span class="lab">Next: Timeline &amp; family</span><a class="btn" href="#assessment">Continue</a></div></div></div></section>
+
+<section class="sec wrap bg-paper"><div class="shead"><div class="shead-t"><div class="eb ">Where you are coming from</div><h2 class="h2">Advice shaped around your passport.</h2></div><div class="shead-r"><p>The right route, the way money moves and the tax questions all depend on nationality. These are the first things we look at.</p><a class="tl" href="#nationality">Read the nationality notes<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div><div class="nat"><div><h3>United States</h3><ul><li>US citizens are taxed on worldwide income wherever they live; Thai accounts bring FBAR and FATCA reporting.</li><li>Eligible for the 10-year O-X retirement visa at 50+.</li><li>LTR suits entrepreneurs and remote executives.</li><li>Owning a Thai company can add US filings: plan with a US tax adviser.</li></ul></div><div><h3>China &amp; Hong Kong</h3><ul><li>Funds must move through licensed, traceable bank channels; mainland personal FX allowances apply.</li><li>We never assist with circumventing capital controls.</li><li>China does not recognise dual nationality.</li><li>LTR and Thailand Privilege are the usual starting points.</li></ul></div><div><h3>Middle East</h3><ul><li>Large families: LTR covers up to four dependants per applicant; others need their own visas.</li><li>Halal dining, mosques and private healthcare in Bangkok and Phuket.</li><li>International schools and villa privacy drive location choice.</li><li>Concierge, security and aviation support through vetted partners.</li></ul></div><div><h3>Europe &amp; UK</h3><ul><li>Tax residency tests at home and in Thailand both apply; treaties decide ties.</li><li>Home-country inheritance and succession rules still reach Thai assets.</li><li>UK, DE, FR, CH, NL and the Nordics are O-X eligible at 50+.</li><li>Retirement visas require continuous health insurance.</li></ul></div></div></section>
+
+<section class="priv dark"><div class="priv-txt"><div class="eb ">By appointment · from THB 50 million</div><h2>Private Client</h2><p class="lead" style="color:rgba(243,240,234,.86)">Discreet advisory for clients seeking exceptional residences, off-market opportunities and tailored relocation support.</p><div class="list2" style="max-width:640px"><div>Off-market property search</div><div>Private viewings</div><div>Relocation coordination</div><div>Residency specialist introductions</div><div>Family relocation</div><div>Property management</div></div><div class="btns" style="align-items:center"><a class="btn light" href="#private">Explore Private Client</a><span class="muted" style="font-size:14px">Every enquiry is handled in confidence.</span></div></div>
+<div class="split-img"><img src="img/g_wine.jpg" alt="Wine and bar gallery in a private residence" loading="lazy"></div></section>
+
+<section class="sec wrap bg-paper" id="insights-sec"><div class="shead"><div class="shead-t"><div class="eb ">Journal</div><h2 class="h2">Living in Thailand</h2></div><div class="shead-r"><p>Considered guides to neighbourhoods, schools, ownership and the practical side of a move.</p><a class="tl" href="#insights">All insights<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div>
+<div class="ins"><a class="lead-art" href="#insights"><div class="ph"><img src="img/lagoon.jpg" alt="Limestone islands in an emerald lagoon" loading="lazy"></div><div class="eb mute">Destinations · Guide</div><h3>Bangkok vs Phuket for Long-Term Living</h3><p class="lead">City convenience or island calm? How schools, healthcare, community and property compare once the holiday feeling wears off.</p></a>
+<div class="arts"><a class="art" href="#insights"><div class="ph"><img src="img/restaurant.jpg" alt="" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eb mute">Neighbourhoods</div><h3>Where Should You Live in Bangkok?</h3></div></a><a class="art" href="#insights"><div class="ph"><img src="img/r32_facade.jpg" alt="" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eb mute">Market</div><h3>What Does ฿50 Million Buy in Thailand?</h3></div></a><a class="art" href="#insights"><div class="ph"><img src="img/familybeach.jpg" alt="" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eb mute">Family</div><h3>Moving Your Family to Thailand</h3></div></a><a class="art" href="#insights"><div class="ph"><img src="img/r32_glass.jpg" alt="" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eb mute">Ownership</div><h3>Understanding Foreign Property Ownership</h3></div></a><a class="art" href="#insights"><div class="ph"><img src="img/villa_hh.jpg" alt="" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:10px"><div class="eb mute">Phuket</div><h3>Best Areas for Luxury Villas in Phuket</h3></div></a></div></div></section>
+
+<section class="final"><img src="img/final.jpg" alt="Resort pool among palms at dusk" loading="lazy"><div class="final-in wrap"><div class="eb light">Begin</div><h2>Thailand, Made Home.</h2><p>Tell us how you want to live. We'll help you explore where to live, what to buy and how to plan your move.</p><a class="btn light" href="#assessment">Start Your Thailand Plan</a></div></section>
+</main><main data-page="properties" hidden>
+<section class="phead wrap bg-ivory"><div class="crumb"><a href="#home">Home</a> <span style="margin:0 8px">/</span> Properties</div><h1>Luxury Properties in Thailand</h1><div class="phead-row"><p class="lead">A considered selection of residences, villas and land across Bangkok and Thailand's most liveable coasts. Many more are shared privately.</p><span class="lab">8 residences shown</span></div></section>
+<div class="fbar"><button class="sfield" type="button"><small>Location</small><span>All of Thailand<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Property Type</small><span>All types<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Price</small><span>Any price<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Bedrooms</small><span>Any<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><button class="sfield" type="button"><small>Lifestyle</small><span>All lifestyles<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span></button><div class="fbar-r"><button class="sortb" type="button"><span class="muted">Sort</span> Curated <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button><div class="seg" role="group" aria-label="View"><button type="button" id="v-grid" aria-pressed="true">Grid</button><button type="button" id="v-map" aria-pressed="false">Map</button></div></div></div>
+<section class="wrap bg-ivory" id="grid-view" style="padding-block:64px var(--sec)"><div class="grid2"><a class="lcard" href="#residence"><div class="ph"><img src="img/g_ext.jpg" alt="The Gentry Phatthanakan" loading="lazy"><span class="tag">Exclusive</span></div><div class="lrow"><div class="pbody"><div class="eb mute">Bangkok · Phatthanakan</div><h3 class="pt">The Gentry Phatthanakan</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>550 sqm</span><i></i><span>Furnished</span></div><p class="pdesc">Three-storey villa with double-height living, private lift and water garden, ten minutes from Thonglor.</p></div><div class="r"><span class="price">฿85,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/r32_render.jpg" alt="32 Residence, Plot 4" loading="lazy"><span class="tag">Ready to decorate</span></div><div class="lrow"><div class="pbody"><div class="eb mute">Bangkok · Phatthanakan</div><h3 class="pt">32 Residence, Plot 4</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>658 sqm</span><i></i><span>Pool</span></div><p class="pdesc">Courtyard pool house with lift and parking for six, sold ready to decorate to your own brief.</p></div><div class="r"><span class="price">฿75,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/river_res.jpg" alt="The Residences at Chao Phraya" loading="lazy"></div><div class="lrow"><div class="pbody"><div class="eb mute">Bangkok · Riverside</div><h3 class="pt">The Residences at Chao Phraya</h3><div class="meta"><span>3 Bedrooms</span><i></i><span>312 sqm</span></div><p class="pdesc">Riverfront residence overlooking Bangkok.</p></div><div class="r"><span class="price">฿95,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/villa_pk.jpg" alt="Villa Andaman Crest" loading="lazy"></div><div class="lrow"><div class="pbody"><div class="eb mute">Phuket · Kamala</div><h3 class="pt">Villa Andaman Crest</h3><div class="meta"><span>6 Bedrooms</span><i></i><span>980 sqm</span></div><p class="pdesc">Clifftop villa with sunset views across the Andaman Sea.</p></div><div class="r"><span class="price">฿168,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/villa_sm.jpg" alt="Baan Sila" loading="lazy"></div><div class="lrow"><div class="pbody"><div class="eb mute">Koh Samui · Choeng Mon</div><h3 class="pt">Baan Sila</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>540 sqm</span></div><p class="pdesc">Garden villa a short walk from a quiet northern bay.</p></div><div class="r"><span class="price">฿62,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/invest.jpg" alt="Doi Suthep Garden House" loading="lazy"></div><div class="lrow"><div class="pbody"><div class="eb mute">Chiang Mai · Hang Dong</div><h3 class="pt">Doi Suthep Garden House</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>620 sqm</span></div><p class="pdesc">Contemporary family home in mature gardens, framed by mountain views.</p></div><div class="r"><span class="price">฿38,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/villa_hh2.jpg" alt="Sea Pines Residence" loading="lazy"></div><div class="lrow"><div class="pbody"><div class="eb mute">Hua Hin · Khao Takiab</div><h3 class="pt">Sea Pines Residence</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>480 sqm</span></div><p class="pdesc">Pool villa near the beach and some of the region's best golf.</p></div><div class="r"><span class="price">฿46,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="lcard" href="#residence"><div class="ph"><img src="img/penthouse.jpg" alt="The Marina Penthouse" loading="lazy"><span class="tag">New</span></div><div class="lrow"><div class="pbody"><div class="eb mute">Pattaya · Na Jomtien</div><h3 class="pt">The Marina Penthouse</h3><div class="meta"><span>3 Bedrooms</span><i></i><span>410 sqm</span></div><p class="pdesc">Full-floor penthouse above the marina, with sea views from every room.</p></div><div class="r"><span class="price">฿54,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a></div>
+<div class="endcta"><div style="display:flex;flex-direction:column;gap:10px"><h2 style="font-size:40px">Can't see the right home?</h2><p class="muted">Showing all public listings. Additional residences are available privately, by introduction.</p></div><div class="btns"><a class="btn outline" href="#advisor">Request Off-Market Access</a><a class="btn" href="#advisor">Speak to an Advisor</a></div></div></section>
+<section class="mapview" id="map-view" hidden><div class="mlist"><a class="mini on" href="#residence"><div class="ph"><img src="img/g_ext.jpg" alt="The Gentry Phatthanakan" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Bangkok · Phatthanakan</div><h3>The Gentry Phatthanakan</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>550 sqm</span><i></i><span>Furnished</span></div><span class="price" style="font-size:16px">฿85,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/r32_render.jpg" alt="32 Residence, Plot 4" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Bangkok · Phatthanakan</div><h3>32 Residence, Plot 4</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>658 sqm</span><i></i><span>Pool</span></div><span class="price" style="font-size:16px">฿75,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/river_res.jpg" alt="The Residences at Chao Phraya" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Bangkok · Riverside</div><h3>The Residences at Chao Phraya</h3><div class="meta"><span>3 Bedrooms</span><i></i><span>312 sqm</span></div><span class="price" style="font-size:16px">฿95,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/villa_pk.jpg" alt="Villa Andaman Crest" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Phuket · Kamala</div><h3>Villa Andaman Crest</h3><div class="meta"><span>6 Bedrooms</span><i></i><span>980 sqm</span></div><span class="price" style="font-size:16px">฿168,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/villa_sm.jpg" alt="Baan Sila" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Koh Samui · Choeng Mon</div><h3>Baan Sila</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>540 sqm</span></div><span class="price" style="font-size:16px">฿62,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/invest.jpg" alt="Doi Suthep Garden House" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Chiang Mai · Hang Dong</div><h3>Doi Suthep Garden House</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>620 sqm</span></div><span class="price" style="font-size:16px">฿38,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/villa_hh2.jpg" alt="Sea Pines Residence" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Hua Hin · Khao Takiab</div><h3>Sea Pines Residence</h3><div class="meta"><span>4 Bedrooms</span><i></i><span>480 sqm</span></div><span class="price" style="font-size:16px">฿46,000,000</span></div></a><a class="mini" href="#residence"><div class="ph"><img src="img/penthouse.jpg" alt="The Marina Penthouse" loading="lazy"></div><div style="display:flex;flex-direction:column;gap:7px;justify-content:center"><div class="eb mute">Pattaya · Na Jomtien</div><h3>The Marina Penthouse</h3><div class="meta"><span>3 Bedrooms</span><i></i><span>410 sqm</span></div><span class="price" style="font-size:16px">฿54,000,000</span></div></a></div>
+<div class="map"><svg viewBox="0 0 880 900" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#d7d2c8" stroke-width="1"><path d="M0 150 C 180 120, 320 190, 520 150 S 800 120, 880 160"/><path d="M0 330 C 200 300, 360 360, 560 320 S 820 300, 880 340"/><path d="M0 520 C 220 500, 380 560, 600 520 S 820 500, 880 530"/><path d="M0 710 C 200 690, 400 740, 620 700 S 840 690, 880 720"/><path d="M150 0 C 130 200, 190 400, 150 600 S 130 820, 160 900"/><path d="M430 0 C 410 220, 470 420, 430 640 S 410 820, 440 900"/><path d="M700 0 C 680 200, 740 420, 700 620 S 680 820, 710 900"/></g><path d="M300 900 C 320 780, 280 700, 340 640 C 400 580, 360 520, 420 470 C 470 430, 520 470, 560 520 C 600 570, 640 600, 700 620" fill="none" stroke="#b7b1a5" stroke-width="1.5" stroke-dasharray="2 6"/></svg><span class="place" style="left:30%;top:9%">Chiang Mai</span><span class="place" style="left:50%;top:54%">Bangkok</span><span class="place" style="left:62%;top:66%">Pattaya</span><span class="place" style="left:28%;top:70%">Hua Hin</span><span class="place" style="left:60%;top:86%">Koh Samui</span><span class="place" style="left:12%;top:93%">Phuket</span><button class="pin" type="button" style="left:28%;top:14%">฿38M</button><button class="pin" type="button" style="left:45%;top:48%">฿95M</button><button class="pin on" type="button" style="left:56%;top:45%">฿85M</button><button class="pin" type="button" style="left:59%;top:52%">฿75M</button><button class="pin" type="button" style="left:66%;top:60%">฿54M</button><button class="pin" type="button" style="left:36%;top:64%">฿46M</button><button class="pin" type="button" style="left:66%;top:79%">฿62M</button><button class="pin" type="button" style="left:22%;top:87%">฿168M</button><div class="zoom"><button type="button" aria-label="Zoom in">+</button><button type="button" aria-label="Zoom out">−</button></div><span class="mapnote">Illustrative map · live map tiles supplied in build</span></div></section>
+</main><main data-page="residence" data-hero hidden>
+<section class="gal" id="gal"><img id="gal-img" src="img/g_living.jpg" alt="Double-height living and dining room at The Gentry Phatthanakan">
+<button class="gal-nav prev" type="button" id="gal-prev" aria-label="Previous photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+<button class="gal-nav next" type="button" id="gal-next" aria-label="Next photo"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+<div class="gal-bot wrap"><div style="display:flex;flex-direction:column;gap:14px;min-width:0;max-width:100%"><div class="eb light" id="gal-cap" style="font-size:11px">Double-height living · 1 / 36</div><div class="thumbs"><button type="button" data-i="0" aria-label="Double-height living" aria-current="true"><img src="img/g_living.jpg" alt="" loading="lazy"></button><button type="button" data-i="1" aria-label="Exterior" aria-current="false"><img src="img/g_ext.jpg" alt="" loading="lazy"></button><button type="button" data-i="2" aria-label="Wine and bar gallery" aria-current="false"><img src="img/g_wine.jpg" alt="" loading="lazy"></button><button type="button" data-i="3" aria-label="Bedroom" aria-current="false"><img src="img/g_bed.jpg" alt="" loading="lazy"></button><button type="button" data-i="4" aria-label="Walk-in closet" aria-current="false"><img src="img/g_closet.jpg" alt="" loading="lazy"></button><button type="button" data-i="5" aria-label="Bathroom" aria-current="false"><img src="img/g_bath.jpg" alt="" loading="lazy"></button><button type="button" data-i="6" aria-label="Water garden" aria-current="false"><img src="img/g_garden.jpg" alt="" loading="lazy"></button></div></div><div class="btns"><a class="btn ghost sm" href="#residence">Floor Plans</a><a class="btn light sm" href="#residence">All 36 Photos</a></div></div></section>
+<section class="wrap bg-ivory"><div class="ptitle"><div style="display:flex;flex-direction:column;gap:18px"><div class="crumb"><a href="#properties">Properties</a> <span style="margin:0 8px">/</span> Bangkok <span style="margin:0 8px">/</span> Phatthanakan 32</div><h1>The Gentry Phatthanakan</h1><p class="sub">"Hideaway", a three-storey villa in a private enclave of 34 homes.</p></div><div class="pprice"><span class="lab">Asking price</span><strong>฿85,000,000</strong><span class="muted" style="font-size:14px">Fully furnished · Ready to move in</span></div></div>
+<div class="facts"><div><span class="lab">Bedrooms</span><b>5</b></div><div><span class="lab">Bathrooms</span><b>6</b></div><div><span class="lab">Interior</span><b>550 sqm</b></div><div><span class="lab">Land</span><b>88 sq.wah · 352 sqm</b></div><div><span class="lab">Floors</span><b>3 with private lift</b></div><div><span class="lab">Parking</span><b>4 cars</b></div></div></section>
+<section class="sec wrap bg-ivory"><div class="ov"><div style="display:flex;flex-direction:column;gap:22px"><div class="eb ">Overview</div><p class="ov-lead">A home designed around the way a family actually lives: a double-height living room open to the floor above, dining for ten, and quiet private floors reached by stair or lift.</p>
+<div class="two" style="margin-top:32px"><div style="display:flex;flex-direction:column;gap:14px"><h3>Architecture &amp; Design</h3><p class="muted">Living, dining and service spaces sit on the ground floor around a light-filled void. Family bedrooms and a lounge occupy the second floor; the third is given to the principal suite, with a central dressing room, bath and a quiet prayer room.</p></div><div style="display:flex;flex-direction:column;gap:14px"><h3>Delivered furnished</h3><p class="muted">The house is sold fully decorated, including the wine and bar gallery, dressing rooms and outdoor living areas, so an overseas buyer can arrive and live from the first night.</p></div></div>
+<h3 class="h3" style="margin-top:32px">Amenities</h3><div class="list2"><div>Double-height living room</div><div>Private lift to all three floors</div><div>Western and Thai kitchens</div><div>Fitness room and spa room</div><div>Walk-in closets, prayer room</div><div>Maid's room with bathroom</div><div>Terraces and water garden</div><div>Covered parking for four cars</div></div></div>
+<aside class="card"><div class="eb mute">Your private advisor</div><div class="adv"><i aria-hidden="true">A</i><div style="display:flex;flex-direction:column;gap:2px"><b style="font-weight:500;font-size:18px">[ADVISOR NAME]</b><span class="muted" style="font-size:14px">Senior Advisor, Bangkok</span></div></div><p class="muted" style="font-size:15px">Viewings in person or by private video walkthrough. We can also outline ownership and long-term stay options before you travel.</p><a class="btn" href="#advisor">Arrange Private Viewing</a><a class="btn outline" href="#assessment">Discuss Property + Residency</a><div class="callout" style="padding:16px 18px"><b class="t">LTR note</b><p style="font-size:14px">At ฿85M this home exceeds the USD 500,000 LTR investment test. Whether it counts depends on how it is held (owned building, or a lease with 10+ years left). <a href="#ltr">How property counts</a></p></div></aside></div></section>
+<section class="wrap bg-ivory" style="padding-bottom:var(--sec)"><div class="mosaic"><div><img src="img/g_wine.jpg" alt="Wine and bar gallery" loading="lazy"></div><div><img src="img/g_bed.jpg" alt="Bedroom" loading="lazy"></div><div><img src="img/g_closet.jpg" alt="Walk-in closet with lounge" loading="lazy"></div><div><img src="img/g_bath.jpg" alt="Bathroom" loading="lazy"></div><div><img src="img/g_garden.jpg" alt="Outdoor living and water garden" loading="lazy"></div></div></section>
+<section class="sec wrap bg-sunk"><div class="two-col"><div style="display:flex;flex-direction:column;gap:20px"><div class="eb ">Ownership information</div><h2 style="font-size:clamp(36px,3.6vw,52px);line-height:1.05">How this home can be held.</h2></div>
+<div style="display:flex;flex-direction:column;gap:28px"><div class="ofacts"><div><span class="lab">Tenure</span><b>[CONFIRM TITLE DEED TYPE]</b></div><div><span class="lab">Sold</span><b>Fully furnished and decorated</b></div><div><span class="lab">Status</span><b>Completed, ready to move in</b></div></div><p class="lead" style="max-width:720px">Foreign nationals generally cannot hold land in Thailand in their own name. A foreign buyer of this house would typically own the building and hold the land on a registered lease of up to 30 years, structured by independent legal counsel. We coordinate introductions to licensed lawyers and explain the options in plain language; we do not give legal advice.</p><div><a class="tl" href="#ownership">What foreigners can own<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div></div></section>
+<section class="sec wrap bg-ivory"><div class="two-col c57"><div style="display:flex;flex-direction:column;gap:20px"><div class="eb ">Location &amp; neighbourhood</div><h2 style="font-size:clamp(36px,3.6vw,52px);line-height:1.05">Phatthanakan, Bangkok</h2><p class="lead">A green, residential district east of Sukhumvit, about 5 minutes from the expressway and around 10 minutes from Thonglor's dining and galleries.</p><div class="near"><div><span class="lab">Shopping</span><span>Lotus's · MaxValu · The Mall</span></div><div><span class="lab">International school</span><span>BCIS International School</span></div><div><span class="lab">Hospitals</span><span>Samitivej Srinakarin · Vibharam</span></div><div><span class="lab">Universities</span><span>Kasem Bundit · Ramkhamhaeng</span></div><div><span class="lab">Getting around</span><span>Chalong Rat Expressway · about 10 min to Thonglor</span></div><div><span class="lab">Airport</span><span>Suvarnabhumi · [CONFIRM DRIVE TIME]</span></div></div></div>
+<div class="nmap"><svg viewBox="0 0 700 560" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#f5f4f2" stroke-width="10"><path d="M0 120 L700 150"/><path d="M180 0 L220 560"/><path d="M0 400 C 200 380, 420 430, 700 390"/></g><g fill="none" stroke="#f5f4f2" stroke-width="4"><path d="M220 260 L700 280"/><path d="M420 0 L440 560"/><path d="M560 150 L580 560"/><path d="M0 260 L220 260"/><path d="M300 150 L320 400"/></g><path d="M0 60 C 240 40, 460 90, 700 60" fill="none" stroke="#b7b1a5" stroke-width="3" stroke-dasharray="10 8"/></svg><div class="npin"><b>The Gentry Phatthanakan</b><i></i></div><span class="place" style="left:20px;top:28px">Expressway</span><span class="place" style="left:20px;top:72%">Phatthanakan Road</span><span class="mapnote">Illustrative neighbourhood map</span></div></div></section>
+<section class="sec wrap dark"><div class="shead"><div class="shead-t"><div class="eb ">Advisor assessment</div><h2 class="h2">Could You Live Here Long Term?</h2></div><div class="shead-r"><p>Our view of how this home works beyond the first visit. Illustrative, and always discussed with you in the context of your own plans.</p></div></div>
+<div class="crit"><div><h3>Lifestyle suitability</h3><div class="rate"><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span>Strong</span></div><p>A quiet enclave of 34 homes, with Thonglor about 10 minutes away.</p></div><div><h3>Family suitability</h3><div class="rate"><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div><span>Excellent</span></div><p>Five bedrooms, a maid's room, garden and a lift across all floors.</p></div><div><h3>Access to schools</h3><div class="rate"><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span>Good</span></div><p>BCIS International nearby; major Sukhumvit schools by expressway.</p></div><div><h3>Healthcare</h3><div class="rate"><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span>Strong</span></div><p>Samitivej Srinakarin and Vibharam hospitals serve the area.</p></div><div><h3>Airport access</h3><div class="rate"><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div><span>Strong</span></div><p>Suvarnabhumi via the expressway network. [CONFIRM DRIVE TIME]</p></div><div><h3>Long-term considerations</h3><div class="rate"><div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><span>Plan ahead</span></div><p>Agree ownership structure and stay pathway before transfer; budget for staff and upkeep.</p></div></div>
+<div class="btns" style="margin-top:56px;align-items:center"><a class="btn light" href="#assessment">Discuss Property + Residency</a><a class="btn ghost" href="#advisor">Arrange Private Viewing</a><span class="muted" style="font-size:13px;max-width:420px">Buying property does not in itself grant a visa or residency. Eligibility depends on individual circumstances.</span></div></section>
+</main><main data-page="bangkok" data-hero hidden>
+<section class="hero"><img src="img/bkk.jpg" alt="Bangkok skyline at twilight"><div class="hero-in wrap"><div class="hero-copy"><div class="crumb">Destinations <span style="margin:0 8px">/</span> Bangkok</div><h1 class="display" style="font-size:clamp(56px,9vw,128px);font-weight:400">Living in Bangkok</h1><p>A global city with international schools, world-class private hospitals and some of Asia's best dining, and a calmer home life than its skyline suggests.</p></div></div><span class="credit">Photo: Sergei Gussev, CC BY 4.0</span></section>
+<section class="sec wrap bg-ivory"><div class="two-col c57"><div style="display:flex;flex-direction:column;gap:20px"><div class="eb ">Why Bangkok</div><h2 style="font-size:clamp(38px,3.9vw,56px);line-height:1.04">Asia's most liveable big city, if you know where to look.</h2></div><div style="display:flex;flex-direction:column;gap:48px"><p style="font-size:clamp(18px,1.5vw,21px)">Bangkok rewards residents who choose their neighbourhood well. The right street puts schools, hospitals, parks and dinner within minutes, and the right home turns a busy city into a private one.</p><div class="facts4"><div><h3>Two international airports</h3><p>Suvarnabhumi and Don Mueang connect the city to Europe, the Gulf, China and Australia.</p></div><div><h3>Private healthcare</h3><p>Internationally accredited hospitals with English-speaking specialists and international patient centres.</p></div><div><h3>International schools</h3><p>British, American and IB curricula across the Sukhumvit corridor and beyond.</p></div><div><h3>Dining and culture</h3><p>Michelin-recognised kitchens, galleries, rooftops and a deep street-food tradition.</p></div></div></div></div></section>
+<section class="sec wrap bg-paper"><div class="shead"><div class="shead-t"><div class="eb ">Neighbourhoods</div><h2 class="h2">Six addresses, six ways to live.</h2></div><div class="shead-r"><p>Where you live in Bangkok shapes your commute, your school run and your evenings. These are the areas our clients ask about most.</p></div></div>
+<div class="hoods"><div class="split-img"><img src="img/restaurant.jpg" alt="Warmly lit restaurant interior" loading="lazy"></div><div><div class="hood"><div style="display:flex;flex-direction:column;gap:8px"><h3>Thonglor</h3><span class="bf">Best for: Families, creatives, second-home owners</span></div><div style="display:flex;flex-direction:column;gap:8px"><p>Design-led dining, galleries and low-rise luxury residences in leafy sois.</p><span class="muted" style="font-size:14px">Typical homes: Condominiums, townhouses, pool villas</span></div></div><div class="hood"><div style="display:flex;flex-direction:column;gap:8px"><h3>Phrom Phong</h3><span class="bf">Best for: Families with school-age children</span></div><div style="display:flex;flex-direction:column;gap:8px"><p>Parks, flagship malls and a strong international community close to schools.</p><span class="muted" style="font-size:14px">Typical homes: Large-format condominiums</span></div></div><div class="hood"><div style="display:flex;flex-direction:column;gap:8px"><h3>Sathorn</h3><span class="bf">Best for: Executives and founders</span></div><div style="display:flex;flex-direction:column;gap:8px"><p>The financial district, embassies and some of the city's best hotels.</p><span class="muted" style="font-size:14px">Typical homes: High-rise and branded residences</span></div></div><div class="hood"><div style="display:flex;flex-direction:column;gap:8px"><h3>Wireless Road</h3><span class="bf">Best for: Principal-residence buyers, diplomats</span></div><div style="display:flex;flex-direction:column;gap:8px"><p>Embassy row beside Lumphini Park, home to landmark residences.</p><span class="muted" style="font-size:14px">Typical homes: Ultra-prime branded condominiums</span></div></div><div class="hood"><div style="display:flex;flex-direction:column;gap:8px"><h3>Chidlom</h3><span class="bf">Best for: Walkable, central city living</span></div><div style="display:flex;flex-direction:column;gap:8px"><p>Established residential lanes, department stores and easy walking.</p><span class="muted" style="font-size:14px">Typical homes: Prime condominiums</span></div></div><div class="hood"><div style="display:flex;flex-direction:column;gap:8px"><h3>Riverside</h3><span class="bf">Best for: Second homes, view-seekers</span></div><div style="display:flex;flex-direction:column;gap:8px"><p>The Chao Phraya, heritage hotels and long views across the water.</p><span class="muted" style="font-size:14px">Typical homes: Riverfront residences</span></div></div><div class="also"><div style="display:flex;flex-direction:column;gap:6px"><span class="eb" style="font-size:11px">Also consider</span><span>Phatthanakan: private villa enclaves around 10 minutes from Thonglor.</span></div><a class="tl" href="#properties">View homes<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div></div></section>
+<section class="sec wrap bg-ivory"><div class="shead"><div class="shead-t"><div class="eb ">Everyday life</div><h2 class="h2">Schools, healthcare, dining and the rest.</h2></div><div class="shead-r"><p>The practical reasons international families and executives choose Bangkok, and keep choosing it.</p></div></div>
+<div class="ess"><div><div class="ph"><img src="img/family.jpg" alt="Family at home" loading="lazy"></div><h3 class="h3">International schools</h3><p>A deep choice of British, American and IB schools, mostly along the Sukhumvit and Bang Na corridors.</p><div class="names">Bangkok Patana · NIST · St Andrews</div></div>
+<div><div class="txtph">Bumrungrad International<br>Samitivej Sukhumvit<br>BNH Hospital</div><h3 class="h3">Healthcare</h3><p>Private hospitals with international accreditation, English-speaking specialists and short waiting times.</p><div class="names">International patient centres</div></div>
+<div><div class="ph"><img src="img/dining.jpg" alt="Fine dining" loading="lazy"></div><h3 class="h3">Dining</h3><p>From Michelin-recognised tasting menus to the neighbourhood noodle shop everyone queues for.</p><div class="names">Thonglor · Sathorn · Riverside</div></div>
+<div><div class="ph"><img src="img/penthouse.jpg" alt="Living room with city views" loading="lazy"></div><h3 class="h3">Lifestyle</h3><p>Rooftops, galleries and members' clubs, with the coast and islands a short trip away.</p><div class="names">Hua Hin · Pattaya · Koh Samui</div></div></div></section>
+<section class="sec wrap bg-sunk"><div class="shead"><div class="shead-t"><div class="eb ">Who it suits</div><h2 class="h2">Who Bangkok suits</h2></div></div><div class="suits"><div><h3>Relocating families</h3><p>School choice, space in the quieter sois and easy weekend escapes.</p></div><div><h3>Executives and founders</h3><p>A regional hub with fast connections across Asia, Europe and the Gulf.</p></div><div><h3>Retirees who want the city</h3><p>Excellent private healthcare and culture, with the coast within easy reach.</p></div><div><h3>Second-home owners</h3><p>Lock-up-and-leave residences with building services and security.</p></div></div></section>
+<section class="sec wrap bg-ivory"><div class="shead"><div class="shead-t"><div class="eb ">In Bangkok</div><h2 class="h2">Featured residences</h2></div><div class="shead-r"><p>A small selection of homes available now. Further Bangkok residences are shared privately.</p><a class="tl" href="#properties">All Bangkok residences<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></div><div class="grid3"><a class="pc" href="#residence"><div class="ph"><img src="img/g_ext.jpg" alt="The Gentry Phatthanakan" loading="lazy"></div><div class="pbody"><div class="eb mute">Bangkok · Phatthanakan</div><h3 class="pt">The Gentry Phatthanakan</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>550 sqm</span><i></i><span>Furnished</span></div><p class="pdesc">Three-storey villa with double-height living, private lift and water garden, ten minutes from Thonglor.</p><div class="pfoot"><span class="price">฿85,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="pc" href="#residence"><div class="ph"><img src="img/r32_render.jpg" alt="32 Residence, Plot 4" loading="lazy"></div><div class="pbody"><div class="eb mute">Bangkok · Phatthanakan</div><h3 class="pt">32 Residence, Plot 4</h3><div class="meta"><span>5 Bedrooms</span><i></i><span>658 sqm</span><i></i><span>Pool</span></div><p class="pdesc">Courtyard pool house with lift and parking for six, sold ready to decorate to your own brief.</p><div class="pfoot"><span class="price">฿75,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a><a class="pc" href="#residence"><div class="ph"><img src="img/river_res.jpg" alt="The Residences at Chao Phraya" loading="lazy"></div><div class="pbody"><div class="eb mute">Bangkok · Riverside</div><h3 class="pt">The Residences at Chao Phraya</h3><div class="meta"><span>3 Bedrooms</span><i></i><span>312 sqm</span></div><p class="pdesc">Riverfront residence overlooking Bangkok.</p><div class="pfoot"><span class="price">฿95,000,000</span><span class="more">View Residence<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></div></a></div></section>
+<section class="sec wrap dark"><div class="ctaband"><div style="display:flex;flex-direction:column;gap:24px"><div class="eb ">Next step</div><h2 style="font-size:clamp(44px,5vw,72px);font-weight:400;line-height:1">Considering Bangkok?</h2><div class="btns"><a class="btn light" href="#advisor">Speak to an Advisor</a><a class="btn ghost" href="#assessment">Start Your Thailand Plan</a></div></div><div style="display:flex;flex-direction:column;gap:14px;justify-content:flex-end"><span class="lab" style="color:var(--dmute)">A first conversation covers</span><p style="font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1.35">Neighbourhoods, schools, budget, how you would hold the property, and which long-term stay options are worth exploring.</p></div></div></section>
+</main><main data-page="live" data-hero hidden>
+<section class="hero"><img src="img/visa.jpg" alt="Tropical resort pool among palms"><div class="hero-in wrap"><div class="hero-copy"><div class="eb light">Live in Thailand</div><h1 class="display" style="font-size:clamp(52px,8.4vw,120px);font-weight:400">Live in Thailand, Longer.</h1><p>Every legal way to stay long term, compared side by side, with what property can and cannot do for you.</p><div class="btns"><a class="btn light" href="#assessment">Start Residency Assessment</a><a class="btn ghost" href="#matrix">Compare Options</a></div></div></div></section>
+
+<section class="sec wrap bg-ivory"><div class="shead"><div class="shead-t"><div class="eb ">Start here</div><h2 class="h2">A visa is not residence. Residence is not citizenship.</h2></div></div>
+<div class="truth">
+<div><span class="k">Visa</span><h3>Permission to stay</h3><p>Granted for a period and on conditions you must keep meeting. The LTR runs up to 10 years; a retirement visa is renewed yearly.</p></div>
+<div><span class="k">Permanent Residence</span><h3>The right to remain</h3><p>Indefinite, but discretionary. Applications open once a year, within a quota of 100 people per nationality, after years of qualifying stay.</p></div>
+<div><span class="k">Citizenship</span><h3>Thai nationality</h3><p>By naturalisation under the Nationality Act, decided by the Ministry of Interior. Thailand has no citizenship-by-investment programme.</p></div>
+</div>
+<div style="margin-top:72px"><div class="path"><div class="step "><span class="dot"></span><div class="who">Your decision</div><h3>Property purchase</h3><p>A home you own or lease, bought with independent legal due diligence.</p><span class="link">Separate application</span></div><div class="step "><span class="dot"></span><div class="who">Immigration Bureau · BOI for LTR</div><h3>Long-term visa</h3><p>Its own application. Property can support the LTR investment test; it never grants a visa.</p><span class="link">Conditions must be maintained</span></div><div class="step gap"><span class="dot"></span><div class="who">You</div><h3>Life &amp; business in Thailand</h3><p>Years of lawful stay, tax filings, work, schooling and community.</p><span class="link">Discretionary · not automatic</span></div><div class="step maybe gap"><span class="dot"></span><div class="who">Immigration Bureau · discretionary</div><h3>Possible Permanent Residence</h3><p>Usually after 3 years of qualifying extensions, within an annual quota. Not guaranteed.</p><span class="link">Discretionary · not automatic</span></div><div class="step maybe"><span class="dot"></span><div class="who">Ministry of Interior · discretionary</div><h3>Possible naturalisation</h3><p>Usually after years as a permanent resident, with Thai language and tax history. Not guaranteed.</p></div></div><div class="pathnote"><b>Important</b><p>Buying property does not, by itself, grant a visa, permanent residence or citizenship. Each stage after the purchase is a separate application decided by the Thai authorities.</p></div></div>
+</section>
+
+<section class="sec wrap bg-paper" id="matrix"><div class="shead"><div class="shead-t"><div class="eb ">Compare</div><h2 class="h2">Long-stay options side by side</h2></div><div class="shead-r"><p>Figures are summaries of current published criteria. Your own eligibility must be confirmed by a licensed Thai immigration lawyer before you apply.</p></div></div>
+<div class="tablewrap"><table class="mx"><thead><tr><th>Pathway</th><th>Designed for</th><th>Min. age</th><th>Financial test</th><th>Can Thai property count?</th><th>Validity</th><th>Work in Thailand</th><th>Family</th><th>Towards PR?</th><th>Confidence</th></tr></thead><tbody><tr class="grp"><td colspan="10">Long-Term Resident (LTR) · BOI programme</td></tr><tr><td>LTR · Wealthy Global Citizen</td><td>High-net-worth individuals</td><td>None</td><td>USD 1M in assets</td><td><span class="yes">Yes</span>, towards the USD 500,000 Thai-investment test</td><td>10 yrs (5 + 5)</td><td>Yes, with digital work permit</td><td>Spouse, children under 20; up to 4 dependants</td><td>Unconfirmed; ask a lawyer</td><td><span class="conf h">HIGH</span></td></tr><tr><td>LTR · Wealthy Pensioner</td><td>Retirees with passive income</td><td>50+</td><td>USD 80,000/yr passive income, or USD 40,000 + USD 250,000 Thai investment</td><td><span class="yes">Yes</span>, for the USD 250,000 option</td><td>10 yrs (5 + 5)</td><td>No Thai employment</td><td>As above</td><td>Unconfirmed</td><td><span class="conf h">HIGH</span></td></tr><tr><td>LTR · Work-from-Thailand Professional</td><td>Remote employees of large foreign companies</td><td>None</td><td>USD 80,000/yr (or USD 40,000 + master's degree)</td><td><span class="no">Not needed</span></td><td>10 yrs (5 + 5)</td><td>Remote work for foreign employer</td><td>As above</td><td>Unconfirmed</td><td><span class="conf h">HIGH</span></td></tr><tr><td>LTR · Highly-Skilled Professional</td><td>Experts in targeted industries</td><td>None</td><td>USD 80,000/yr (or USD 40,000 + master's)</td><td><span class="no">Not needed</span></td><td>10 yrs (5 + 5)</td><td>Yes; 17% flat income tax</td><td>As above</td><td>Unconfirmed</td><td><span class="conf h">HIGH</span></td></tr><tr class="grp"><td colspan="10">Membership and retirement</td></tr><tr><td>Thailand Privilege</td><td>Frequent visitors, second homes</td><td>None</td><td>Membership fee THB 650,000 to 5,000,000</td><td><span class="no">No</span></td><td>5 to 20 yrs by tier</td><td>No</td><td>Family memberships available by tier</td><td>Generally no</td><td><span class="conf h">HIGH</span></td></tr><tr><td>Retirement O-A</td><td>Retirees 50+</td><td>50+</td><td>THB 800,000 deposit or THB 65,000/month income, plus insurance</td><td><span class="no">No</span></td><td>1 yr, renewable</td><td>No</td><td>Spouse may follow as dependant</td><td>No retirement category for PR</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>Retirement O-X</td><td>Retirees 50+ from 14 countries</td><td>50+</td><td>THB 3,000,000 deposit (or 1.8M + 1.2M/yr income), plus insurance</td><td><span class="no">No</span></td><td>10 yrs (5 + 5)</td><td>No</td><td>Spouse may follow</td><td>No retirement category for PR</td><td><span class="conf h">HIGH</span></td></tr><tr class="grp"><td colspan="10">Family, work and flexible stays</td></tr><tr><td>Non-O (spouse of a Thai national)</td><td>Married to a Thai citizen</td><td>None</td><td>Around THB 400,000 deposit or THB 40,000/month income</td><td><span class="no">No</span></td><td>1 yr, renewable</td><td>With a work permit</td><td>Children</td><td>Yes, family category</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>Non-B + work permit / BOI</td><td>Employees, founders, executives</td><td>None</td><td>Employment in Thailand; company capital and staffing rules apply</td><td><span class="no">No</span></td><td>Tied to employment, renewable</td><td>Yes</td><td>Spouse, children</td><td>Yes, employment or business category</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>Destination Thailand Visa (DTV)</td><td>Remote workers, approved activities</td><td>None</td><td>THB 500,000 in funds</td><td><span class="no">No</span></td><td>5 yrs; up to 180 days per entry (+180)</td><td>Remote work for foreign clients only</td><td>Spouse, children under 20</td><td>No</td><td><span class="conf m">MEDIUM</span></td></tr><tr class="grp"><td colspan="10">Residence</td></tr><tr><td>Permanent Residence</td><td>Long-term residents with 3+ years of qualifying extensions</td><td>None</td><td>Category-based (investment, employment, business, family, expertise)</td><td><span class="no">No property category</span></td><td>Indefinite</td><td>With a work permit</td><td>Family category exists</td><td>This is PR</td><td><span class="conf m">MEDIUM</span></td></tr></tbody></table></div>
+<p class="scrollhint">On smaller screens, scroll the table sideways. Reviewed 24 September 2026.</p>
+</section>
+
+<section class="sec wrap bg-ivory" id="ltr"><div class="doc"><div class="doc-side"><div class="eb ">Long-Term Resident</div><h2 class="h2">The LTR, and how property can count.</h2><p class="muted">The only long-stay route where buying a home can help you qualify.</p></div>
+<div class="doc-main">
+<p>The Wealthy Global Citizen category asks for USD 1 million in assets and at least USD 500,000 invested in Thailand, through Thai government bonds, direct investment or Thai property. Wealthy Pensioners earning USD 40,000 to 80,000 a year can make up the difference with USD 250,000 invested the same way.</p>
+<div class="callout"><b class="t">What counts, according to current guidance</b><ul class="ticks-list"><li>Freehold condominium units held in your own name</li><li>Buildings or villas you own</li><li>Leasehold property with at least 10 years of the lease remaining</li><li>A combination of property, bonds and direct investment</li></ul><p style="font-size:13px;color:var(--text2)!important">Per BOI Announcement Por. 3/2568 (4 Feb 2025), as reported by Tilleke &amp; Gibbins, 30 Apr 2026. <span class="conf m">MEDIUM</span></p></div>
+<div class="callout warn"><b class="t">Conflicting sources</b><p>Some secondary guides still say only freehold condominiums qualify. The 2025 amendment reported by Tilleke &amp; Gibbins includes buildings, villas and leaseholds with 10+ years remaining. We treat the BOI's written confirmation as the deciding source for each client.</p></div>
+<h3>Confirm with a licensed lawyer before you buy</h3>
+<ul class="ticks-list q"><li>Off-plan units: likely to count only once completed and transferred into your name</li><li>Mortgaged property: whether only your equity counts</li><li>Several properties combined to reach the threshold</li><li>How recently the purchase must have been made before you apply</li><li>Whether LTR years count towards the 3-year history for permanent residence</li></ul>
+<p>The BOI states that every condition, including the investment, must be kept for the life of the visa. Selling the property without replacing the investment can affect renewal. Fee: THB 50,000 for the 10-year visa when issued in Thailand. Reporting moves from every 90 days to once a year.</p>
+</div></div></section>
+
+<section class="sec wrap bg-sunk" id="privilege"><div class="doc"><div class="doc-side"><div class="eb ">Thailand Privilege</div><h2 class="h2">Membership, not investment.</h2></div>
+<div class="doc-main"><p>The official long-stay membership programme. It needs no income or asset test beyond the fee and a background check, and it includes airport fast-track and personal liaisons for reporting and banking. It has no link to property ownership.</p>
+<div class="facts-list"><div><span class="k">Bronze</span><span>THB 650,000 · 5 years</span></div><div><span class="k">Gold</span><span>THB 900,000 · 5 years</span></div><div><span class="k">Platinum</span><span>THB 1,500,000 · 10 years</span></div><div><span class="k">Diamond</span><span>THB 2,500,000 · 15 years</span></div><div><span class="k">Reserve</span><span>THB 5,000,000 · 20 years</span></div></div>
+<p style="font-size:13px">Source: Thailand Privilege Card Co., accessed 24 September 2026. <span class="conf h">HIGH</span></p></div></div></section>
+
+<section class="sec wrap bg-ivory" id="retirement"><div class="doc"><div class="doc-side"><div class="eb ">Retirement</div><h2 class="h2">Retirement visas, O-A and O-X.</h2></div>
+<div class="doc-main"><p>For clients aged 50 and over. The O-A is a one-year visa renewed annually, with deposit or income tests and health insurance. The O-X gives up to 10 years to citizens of 14 countries: the USA, UK, Canada, Australia, Japan, Germany, France, Italy, Switzerland, the Netherlands, Sweden, Norway, Denmark and Finland.</p>
+<div class="facts-list"><div><span class="k">O-X funds</span><span>THB 3M in a Thai fixed deposit, or THB 1.8M plus THB 1.2M annual income; at least THB 1.5M kept after year one</span></div><div><span class="k">Insurance</span><span>Required for the whole stay</span></div><div><span class="k">Work</span><span>Not permitted, other than approved voluntary work</span></div></div>
+<p>Retirement visas do not lead to permanent residence: there is no retirement category for PR.</p></div></div></section>
+
+<section class="sec wrap bg-paper" id="business"><div class="doc"><div class="doc-side"><div class="eb ">Business &amp; work</div><h2 class="h2">If you will work or run a company here.</h2></div>
+<div class="doc-main"><p>Employees and executives usually hold a Non-B visa with a work permit, renewed with the job. BOI-promoted companies, the LTR Highly-Skilled Professional category and the SMART Visa offer faster routes in targeted industries; confirm which scheme is open to your sector.</p><p>Years of employment with Thai tax filings are the most common foundation for a permanent residence application.</p></div></div></section>
+
+<section class="sec wrap bg-ivory" id="family"><div class="doc"><div class="doc-side"><div class="eb ">Family</div><h2 class="h2">Moving the whole family.</h2></div>
+<div class="doc-main"><p>Most routes let a spouse and children under 20 follow the main applicant. The LTR allows up to four dependants; parents and larger households may need their own visas. Since the Marriage Equality Act took effect in 2025, same-sex spouses are recognised as spouses.</p><p>Spouses of Thai nationals have their own visa route and a dedicated family category for permanent residence.</p></div></div></section>
+
+<section class="sec wrap bg-sunk" id="pr"><div class="doc"><div class="doc-side"><div class="eb ">Permanent Residence</div><h2 class="h2">Can a property purchase lead to PR?</h2><p style="font-family:var(--serif);font-size:30px;line-height:1.2">No, not directly.</p></div>
+<div class="doc-main"><p>There is no property category for Thai permanent residence. A home can support the LTR, and the life you build on that visa can later support an application, but the purchase itself earns nothing towards PR.</p>
+<div class="facts-list">
+<div><span class="k">Eligibility</span><span>A non-immigrant visa held and extended for at least 3 consecutive years before applying</span></div>
+<div><span class="k">Quota</span><span>100 people per nationality per year; applications open once a year, usually in the last quarter</span></div>
+<div><span class="k">Categories</span><span>Investment, employment, business, family (Thai or PR spouse, parent or child), expertise and humanitarian</span></div>
+<div><span class="k">Investment category</span><span>Sources differ on the current threshold and qualifying assets; to be confirmed by a lawyer</span></div>
+<div><span class="k">Interview</span><span>In Thai, with supporting tax and financial records</span></div>
+<div><span class="k">Government fees</span><span>THB 7,600 to apply; THB 191,400 on approval (THB 95,700 for family of a Thai or PR holder)</span></div>
+</div>
+<p style="font-size:13px">Source: Siam Legal International, 2026. <span class="conf m">MEDIUM</span> Approval is discretionary and can take a year or more.</p></div></div></section>
+
+<section class="sec wrap dark" id="citizenship"><div class="doc"><div class="doc-side"><div class="eb ">Citizenship</div><h2 class="h2" style="color:var(--dtext)">Thai citizenship cannot be bought.</h2></div>
+<div class="doc-main"><p style="font-size:19px;color:var(--dtext)">Thailand has no citizenship-by-investment programme, no "golden passport" and no citizenship through property, whatever its value.</p>
+<p>Naturalisation is possible under the Nationality Act for people who have lived here for many years. The usual sequence is permanent residence first, then at least five years of domicile, a regular occupation with Thai tax history, Thai language ability and good conduct. Spouses of Thai nationals have a shorter route. The Ministry of Interior decides, and approval is never guaranteed.</p>
+<p>Check your home country's rules too: some countries, including China, do not allow dual nationality, and Thailand may ask applicants to declare they will renounce a previous nationality.</p>
+<p style="font-size:13px"><span class="conf m">MEDIUM</span> Confirm current requirements with a licensed Thai immigration lawyer.</p></div></div></section>
+
+<section class="sec wrap bg-ivory" id="sources"><div class="shead"><div class="shead-t"><div class="eb ">Sources</div><h2 class="h2">Where these summaries come from</h2></div><div class="shead-r"><p>Government and official programme sources first; law firms where official text is unclear. Last reviewed 24 September 2026.</p></div></div><div class="tablewrap" style="border-top:0"><table class="src"><thead><tr><th>Topic</th><th>Source</th><th>Link</th><th>Date</th><th>Confidence</th></tr></thead><tbody><tr><td>LTR categories, fees, dependants, reporting</td><td>Board of Investment, LTR programme site</td><td><a href="https://ltr.boi.go.th/" target="_blank" rel="noopener">ltr.boi.go.th</a></td><td>Accessed 24 September 2026</td><td><span class="conf h">HIGH</span></td></tr><tr><td>Property types that count for LTR</td><td>Tilleke &amp; Gibbins (law firm), citing BOI Announcement Por. 3/2568, 4 Feb 2025</td><td><a href="https://www.tilleke.com/insights/thailands-ltr-visa-pathway-through-property-investment/8/" target="_blank" rel="noopener">tilleke.com</a></td><td>30 Apr 2026</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>Thailand Privilege tiers and fees</td><td>Thailand Privilege Card Co. (official)</td><td><a href="https://www.thailandprivilege.co.th/" target="_blank" rel="noopener">thailandprivilege.co.th</a></td><td>Accessed 24 September 2026</td><td><span class="conf h">HIGH</span></td></tr><tr><td>O-X retirement visa</td><td>Royal Thai Government, thailand.go.th</td><td><a href="https://www.thailand.go.th/issue-focus-detail/010_023" target="_blank" rel="noopener">thailand.go.th</a></td><td>Accessed 24 September 2026</td><td><span class="conf h">HIGH</span></td></tr><tr><td>Permanent residence quota, categories, fees</td><td>Siam Legal International (law firm)</td><td><a href="https://www.siam-legal.com/thailand-visa/permanent-residence-thailand.php" target="_blank" rel="noopener">siam-legal.com</a></td><td>2026 guide</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>Foreign-income remittance tax (Por. 161/2566, 162/2566)</td><td>ThaiLawOnline status tracker</td><td><a href="https://www.thailawonline.com/thailand-remittance-tax-exemption-status/" target="_blank" rel="noopener">thailawonline.com</a></td><td>17 Sep 2026</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>99-year lease proposal status; 2025 Supreme Court lease ruling</td><td>Dansiam Property (secondary)</td><td><a href="https://dansiam-property.com/thailand-99-year-leasehold-law-2026/" target="_blank" rel="noopener">dansiam-property.com</a></td><td>Mid-2026</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>DTV requirements</td><td>ThaiLawOnline</td><td><a href="https://www.thailawonline.com/destination-thailand-visa-dtv-requirements/" target="_blank" rel="noopener">thailawonline.com</a></td><td>2026</td><td><span class="conf m">MEDIUM</span></td></tr><tr><td>Naturalisation requirements</td><td>Nationality Act B.E. 2508 (as amended), secondary summary</td><td><a href="https://en.wikipedia.org/wiki/Thai_nationality_law" target="_blank" rel="noopener">summary</a></td><td>Accessed 24 September 2026</td><td><span class="conf m">MEDIUM</span></td></tr></tbody></table></div></section>
+</main><main data-page="assessment" hidden>
+<section class="phead wrap bg-ivory"><div class="crumb"><a href="#home">Home</a> <span style="margin:0 8px">/</span> Residency Assessment</div><h1>Your Thailand residence strategy</h1><p class="lead">Nine questions. We suggest the long-stay routes worth exploring, homes that fit, and what to confirm with a lawyer.</p></section>
+<section class="wrap bg-ivory" style="padding-block:24px var(--sec)"><div class="assess"><form class="aform" id="aform">
+<div style="display:flex;justify-content:space-between;align-items:center"><span class="lab">Your situation</span><span class="lab" style="color:var(--bronze)">Example answers shown</span></div>
+<div class="fg">
+<div class="fld full"><label for="a-nat">Nationality</label><select id="a-nat"><option value="United States" selected>United States</option><option value="China (mainland)">China (mainland)</option><option value="Hong Kong SAR">Hong Kong SAR</option><option value="United Arab Emirates">United Arab Emirates</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Qatar">Qatar</option><option value="Kuwait">Kuwait</option><option value="Bahrain">Bahrain</option><option value="Oman">Oman</option><option value="United Kingdom">United Kingdom</option><option value="Germany">Germany</option><option value="France">France</option><option value="Switzerland">Switzerland</option><option value="Netherlands">Netherlands</option><option value="Sweden">Sweden</option><option value="Norway">Norway</option><option value="Denmark">Denmark</option><option value="Finland">Finland</option><option value="Australia">Australia</option><option value="Canada">Canada</option><option value="Japan">Japan</option><option value="Italy">Italy</option><option value="Singapore">Singapore</option><option value="Other">Other</option></select></div>
+<div class="fld"><label for="a-age">Age</label><input id="a-age" type="number" min="18" max="99" value="48" inputmode="numeric"></div>
+<div class="fld"><label for="a-fam">Household</label><select id="a-fam"><option value="single">Just me</option><option value="couple">Couple</option><option value="kids" selected>Couple with children</option><option value="thai">Married to a Thai national</option><option value="extended">Extended family (5+)</option></select></div>
+<div class="fld"><label for="a-nw">Net worth</label><select id="a-nw"><option value="0">Under USD 1M</option><option value="1">USD 1M to 3M</option><option value="3" selected>USD 3M to 10M</option><option value="10">USD 10M to 50M</option><option value="50">USD 50M+</option></select></div>
+<div class="fld"><label for="a-inc">Annual income</label><select id="a-inc"><option value="0">Under USD 40,000</option><option value="40">USD 40,000 to 80,000</option><option value="80">USD 80,000 to 250,000</option><option value="250" selected>USD 250,000+</option></select></div>
+<div class="fld full"><label for="a-work">How you earn</label><select id="a-work"><option value="business" selected>I own or run a business</option><option value="remote">Employed remotely by a foreign company</option><option value="local">I will work for a Thai company</option><option value="passive">Pension or investment income</option><option value="none">Not working</option></select></div>
+<div class="fld"><label for="a-bud">Property budget</label><select id="a-bud"><option value="15">Under THB 20M</option><option value="35">THB 20M to 50M</option><option value="75" selected>THB 50M to 100M</option><option value="150">THB 100M to 200M</option><option value="250">THB 200M+</option></select></div>
+<div class="fld"><label for="a-loc">Preferred location</label><select id="a-loc"><option value="Bangkok" selected>Bangkok</option><option value="Phuket">Phuket</option><option value="Koh Samui">Koh Samui</option><option value="Hua Hin">Hua Hin</option><option value="Pattaya">Pattaya</option><option value="Chiang Mai">Chiang Mai</option><option value="Undecided">Undecided</option></select></div>
+<div class="fld full"><label for="a-stay">How long you want to stay</label><select id="a-stay"><option value="few">A few months a year</option><option value="most">Most of the year</option><option value="perm" selected>Permanently</option></select></div>
+</div>
+<button class="btn" type="submit">See My Options</button>
+<p class="muted" style="font-size:13px">Indicative only. This is not legal advice and does not assess eligibility; a licensed lawyer confirms every route.</p>
+</form>
+<div class="results" id="results" aria-live="polite"></div></div></section>
+</main><main data-page="ownership" hidden>
+<section class="phead wrap bg-ivory"><div class="crumb"><a href="#home">Home</a> <span style="margin:0 8px">/</span> Buy Property <span style="margin:0 8px">/</span> Ownership</div><h1>What foreigners can own in Thailand</h1><p class="lead">A clear account of condominiums, villas, land and company structures, including the ones we will not arrange. Reviewed 24 September 2026.</p></section>
+<section class="sec wrap bg-paper" style="padding-top:64px"><div class="doc"><div class="doc-side"><div class="eb ">Condominiums</div><h2 class="h2">Freehold, in your own name.</h2></div>
+<div class="doc-main"><p>Foreigners can own condominium units outright. Foreign ownership in each building is capped at 49% of the total unit floor area, so availability for foreign buyers varies by project.</p>
+<div class="facts-list"><div><span class="k">Funds</span><span>Brought into Thailand in foreign currency, with bank evidence of the transfer for the Land Office</span></div><div><span class="k">Title</span><span>Registered in your name at the Land Office</span></div><div><span class="k">Transfer costs</span><span>Transfer fee, stamp duty or specific business tax and withholding tax; who pays is negotiated</span></div><div><span class="k">Inheritance &amp; resale</span><span>Units can be sold or inherited; a foreign heir must fit the foreign quota and rules. Confirm with a lawyer.</span></div></div>
+<div class="callout"><b class="t">Proposals, not law</b><p>Plans to raise the foreign condominium quota to 75% and to allow 99-year leases were discussed in 2025. As of 24 September 2026 neither has been enacted.</p></div></div></div></section>
+
+<section class="sec wrap bg-ivory"><div class="doc"><div class="doc-side"><div class="eb ">Villas &amp; houses</div><h2 class="h2">Own the house, lease the land.</h2></div>
+<div class="doc-main"><p>A foreigner can own a building separately from the land beneath it. The land is usually held on a registered lease of up to 30 years.</p>
+<div class="facts-list"><div><span class="k">Registered lease</span><span>Up to 30 years, registered at the Land Office</span></div><div><span class="k">Renewal options</span><span>Contractual promises only. A 2025 Supreme Court ruling rejected stacked "30 + 30 + 30" structures.</span></div><div><span class="k">Superficies</span><span>A registered right to own buildings on another's land</span></div><div><span class="k">Usufruct</span><span>A right to use land and its income for a period or for life</span></div></div>
+<p>Leasehold houses with at least 10 years remaining may also count towards the LTR investment test. See <a href="#ltr">LTR and property</a>.</p></div></div></section>
+
+<section class="sec wrap bg-sunk"><div class="doc"><div class="doc-side"><div class="eb ">Land</div><h2 class="h2">Generally, no.</h2></div>
+<div class="doc-main"><p>Foreign individuals cannot generally own land in Thailand. Section 96 bis of the Land Code allows up to one rai for residential use for a foreigner who invests at least THB 40 million in approved forms and keeps it there for at least five years, with the Minister of Interior's approval. It is rarely used, and we treat it as a specialist legal matter. <span class="conf m">MEDIUM</span></p></div></div></section>
+
+<section class="sec wrap bg-ivory"><div class="doc"><div class="doc-side"><div class="eb ">Companies</div><h2 class="h2">Thai companies and nominee risks.</h2></div>
+<div class="doc-main"><p>The Foreign Business Act restricts foreign-majority companies, and a Thai-majority company is treated as foreign if its Thai shareholders are nominees. Holding land through nominee shareholders is illegal and carries criminal and civil exposure, including forced sale.</p>
+<div class="callout stop"><b class="t">Structures we will not arrange or market</b><ul class="ticks-list x"><li>Nominee Thai shareholders used to hold land for a foreign buyer</li><li>"Guaranteed" lease renewals presented as ownership</li><li>Any structure described as a way around the land rules</li></ul></div>
+<p>Every purchase we support goes through an independent, licensed Thai law firm for title search, encumbrances, zoning and developer licences.</p></div></div></section>
+</main><main data-page="relocate" hidden>
+<section class="phead wrap bg-ivory"><div class="crumb"><a href="#home">Home</a> <span style="margin:0 8px">/</span> Relocate</div><h1>Relocate to Thailand</h1><p class="lead">Schools, healthcare, money, tax and the rest of the move, coordinated with licensed partners.</p></section>
+<section class="sec wrap bg-paper" id="schools" style="padding-top:64px"><div class="doc"><div class="doc-side"><div class="eb ">Schools</div><h2 class="h2">Choosing the school first.</h2></div><div class="doc-main"><p>Bangkok has the deepest choice of British, American and IB schools, mostly along the Sukhumvit and Bang Na corridors; Phuket, Hua Hin and Chiang Mai have smaller international options. For families, we shortlist neighbourhoods around the school run and coordinate admissions timelines.</p></div></div></section>
+<section class="sec wrap bg-ivory" id="healthcare"><div class="doc"><div class="doc-side"><div class="eb ">Healthcare</div><h2 class="h2">Private hospitals and insurance.</h2></div><div class="doc-main"><p>Internationally accredited private hospitals in Bangkok and Phuket offer English-speaking specialists and international patient centres. Several visas require continuous health insurance; we introduce licensed insurance brokers.</p></div></div></section>
+<section class="sec wrap bg-sunk" id="banking"><div class="doc"><div class="doc-side"><div class="eb ">Banking &amp; moving money</div><h2 class="h2">Moving large sums, properly.</h2></div><div class="doc-main"><p>Condominium purchases need foreign funds brought in through Thai banks with the right documentation. Every client provides source-of-funds and source-of-wealth evidence; developers, lawyers and banks run their own checks too.</p>
+<div class="callout"><b class="t">Clients from mainland China</b><p>Personal foreign-exchange allowances and reporting rules apply to outbound transfers. Funds must move through licensed, traceable bank channels. We do not assist with circumventing capital controls.</p></div></div></div></section>
+<section class="sec wrap bg-ivory" id="tax"><div class="doc"><div class="doc-side"><div class="eb ">Tax residency</div><h2 class="h2">When Thailand taxes you.</h2></div><div class="doc-main">
+<div class="facts-list"><div><span class="k">Tax resident</span><span>Present in Thailand 180 days or more in a calendar year</span></div><div><span class="k">Foreign income</span><span>Since 1 Jan 2024, foreign income is assessable when remitted to Thailand, in any later year (Por. 161/2566)</span></div><div><span class="k">Pre-2024 income</span><span>Income earned before 1 Jan 2024 can be remitted without Thai tax (Por. 162/2566)</span></div><div><span class="k">Proposed relief</span><span>An exemption for income remitted in the same or following year was proposed but, as of 17 Sep 2026, is not law</span></div><div><span class="k">LTR benefit</span><span>Wealthy Global Citizens, Wealthy Pensioners and Work-from-Thailand Professionals are exempt on foreign-source income</span></div><div><span class="k">Treaties</span><span>Double tax agreements decide which country taxes what; US citizens remain taxable in the US</span></div></div>
+<p>This is orientation only. Before you move, take advice from a licensed Thai tax adviser and a tax adviser in your home country. <span class="conf m">MEDIUM</span></p></div></div></section>
+<section class="sec wrap dark" id="nationality"><div class="shead"><div class="shead-t"><div class="eb ">By nationality</div><h2 class="h2">Notes for our core markets</h2></div><div class="shead-r"><p>General orientation only. Home-country legal and tax advice is always needed.</p></div></div><div class="nat"><div><h3>United States</h3><ul><li>US citizens are taxed on worldwide income wherever they live; Thai accounts bring FBAR and FATCA reporting.</li><li>Eligible for the 10-year O-X retirement visa at 50+.</li><li>LTR suits entrepreneurs and remote executives.</li><li>Owning a Thai company can add US filings: plan with a US tax adviser.</li></ul></div><div><h3>China &amp; Hong Kong</h3><ul><li>Funds must move through licensed, traceable bank channels; mainland personal FX allowances apply.</li><li>We never assist with circumventing capital controls.</li><li>China does not recognise dual nationality.</li><li>LTR and Thailand Privilege are the usual starting points.</li></ul></div><div><h3>Middle East</h3><ul><li>Large families: LTR covers up to four dependants per applicant; others need their own visas.</li><li>Halal dining, mosques and private healthcare in Bangkok and Phuket.</li><li>International schools and villa privacy drive location choice.</li><li>Concierge, security and aviation support through vetted partners.</li></ul></div><div><h3>Europe &amp; UK</h3><ul><li>Tax residency tests at home and in Thailand both apply; treaties decide ties.</li><li>Home-country inheritance and succession rules still reach Thai assets.</li><li>UK, DE, FR, CH, NL and the Nordics are O-X eligible at 50+.</li><li>Retirement visas require continuous health insurance.</li></ul></div></div></section>
+</main><main data-page="private" data-hero hidden>
+<section class="hero"><img src="img/g_wine.jpg" alt="Wine and bar gallery in a private residence"><div class="hero-in wrap"><div class="hero-copy"><div class="eb light">Private Client · from THB 50 million</div><h1 class="display" style="font-weight:400">Private Client</h1><p>Discreet advisory for clients seeking exceptional residences, off-market opportunities and a move planned end to end.</p><div class="btns"><a class="btn light" href="#advisor">Request Private Consultation</a></div></div></div></section>
+<section class="sec wrap bg-ivory"><div class="shead"><div class="shead-t"><div class="eb ">Service levels</div><h2 class="h2">Four ways to work with us</h2></div><div class="shead-r"><p>Regulated services are never bundled into our fees. Licensed professionals are engaged by you directly, and we coordinate them.</p></div></div>
+<div class="pk"><article class=""><h3>Thailand Residency</h3><p class="for">For clients deciding how to stay</p><ul><li>Residency assessment and written pathway plan</li><li>Introductions to licensed immigration lawyers</li><li>Application timeline and document coordination</li><li>Annual review of conditions</li></ul><div class="fee">Fixed advisory fee · [FEE]</div></article><article class=""><h3>Thailand Home</h3><p class="for">For buyers of one residence</p><ul><li>Curated shortlist and private viewings</li><li>Independent legal due diligence, coordinated</li><li>Negotiation and handover</li><li>Furnishing and property management introductions</li></ul><div class="fee">Commission-based · [RATE]</div></article><article class="hl"><h3>Private Client</h3><p class="for">For acquisitions from THB 50 million</p><ul><li>Off-market residences and discreet viewings</li><li>Property and residency planned together</li><li>Family relocation, schools and healthcare</li><li>Dedicated senior advisor</li></ul><div class="fee">Annual retainer · [FEE]</div></article><article class=""><h3>Family Office</h3><p class="for">For multi-property, multi-generation moves</p><ul><li>Portfolio search across destinations</li><li>Household staff, security and estate introductions</li><li>Aviation, yacht and concierge partners</li><li>Consolidated reporting for your advisers</li></ul><div class="fee">By proposal</div></article></div></section>
+<section class="sec wrap bg-paper"><div class="shead"><div class="shead-t"><div class="eb ">Who does what</div><h2 class="h2">Clear roles, licensed where it matters.</h2></div></div>
+<div class="tablewrap" style="border-top:0"><table class="roles"><thead><tr><th>Service</th><th>Provided by</th></tr></thead><tbody><tr><td>Property search, curation, negotiation</td><td>Luxury Thai Life</td></tr><tr><td>Residency strategy and coordination</td><td>Luxury Thai Life, with licensed immigration lawyers</td></tr><tr><td>Legal advice, due diligence, conveyancing</td><td>Independent licensed Thai law firm</td></tr><tr><td>Visa and LTR filings</td><td>Licensed immigration lawyers; BOI endorses LTR</td></tr><tr><td>Tax advice</td><td>Licensed Thai and home-country tax advisers</td></tr><tr><td>Insurance</td><td>Licensed insurance brokers</td></tr><tr><td>Banking, FX and financing</td><td>Licensed banks</td></tr></tbody></table></div>
+<div class="callout" style="margin-top:32px;max-width:860px"><b class="t">Compliance</b><p>Every private client engagement starts with identity, source-of-funds and source-of-wealth checks, and screening against sanctions and politically exposed person lists.</p></div></section>
+</main><main data-page="guides" hidden>
+<section class="phead wrap bg-ivory"><div class="crumb"><a href="#home">Home</a> <span style="margin:0 8px">/</span> Guides</div><h1>Straight answers</h1><p class="lead">The questions international clients ask first, answered plainly, with sources. Reviewed 24 September 2026.</p></section>
+<section class="wrap bg-ivory" style="padding-block:24px var(--sec)"><div class="gd"><a href="#ownership"><span class="ans">Yes: condominiums freehold; houses with leased land.</span><h3>Can foreigners buy property in Thailand?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#matrix"><span class="ans">Every legal route, compared.</span><h3>Thailand long-stay visa guide</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#ltr"><span class="ans">Property can count towards the USD 500,000 test.</span><h3>Thailand LTR visa and property investment</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#pr"><span class="ans">Possible after years of qualifying stay. Not through property.</span><h3>Thailand permanent residence</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#citizenship"><span class="ans">Only by naturalisation. No investment route exists.</span><h3>Can foreigners become Thai citizens?</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#tax"><span class="ans">180 days, and the remittance rule since 2024.</span><h3>Thailand tax residency</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#banking"><span class="ans">Documented, traceable, through licensed banks.</span><h3>Moving money to Thailand</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a><a href="#schools"><span class="ans">Schools first, then neighbourhood, then home.</span><h3>Moving your family to Thailand</h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div>
+<div style="margin-top:72px"><a class="tl" href="#sources">See our sources<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></section>
+</main><main data-page="insights" hidden>
+<section class="phead wrap bg-ivory"><div class="crumb"><a href="#home">Home</a> <span style="margin:0 8px">/</span> Insights</div><h1>Living in Thailand</h1><p class="lead">Considered guides to neighbourhoods, schools, ownership and the practical side of a move. Articles shown here are working titles for the concept.</p></section>
+<section class="wrap bg-ivory" style="padding-block:24px var(--sec)"><div class="grid3"><a class="pc" href="#insights"><div class="ph"><img src="img/lagoon.jpg" alt="" loading="lazy"></div><div class="pbody"><div class="eb mute">Destinations</div><h3 class="pt">Bangkok vs Phuket for Long-Term Living</h3><span class="more">Read the guide<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a><a class="pc" href="#insights"><div class="ph"><img src="img/restaurant.jpg" alt="" loading="lazy"></div><div class="pbody"><div class="eb mute">Neighbourhoods</div><h3 class="pt">Where Should You Live in Bangkok?</h3><span class="more">Read the guide<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a><a class="pc" href="#insights"><div class="ph"><img src="img/r32_facade.jpg" alt="" loading="lazy"></div><div class="pbody"><div class="eb mute">Market</div><h3 class="pt">What Does ฿50 Million Buy in Thailand?</h3><span class="more">Read the guide<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a><a class="pc" href="#insights"><div class="ph"><img src="img/familybeach.jpg" alt="" loading="lazy"></div><div class="pbody"><div class="eb mute">Family</div><h3 class="pt">Moving Your Family to Thailand</h3><span class="more">Read the guide<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a><a class="pc" href="#insights"><div class="ph"><img src="img/r32_glass.jpg" alt="" loading="lazy"></div><div class="pbody"><div class="eb mute">Ownership</div><h3 class="pt">Understanding Foreign Property Ownership</h3><span class="more">Read the guide<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a><a class="pc" href="#insights"><div class="ph"><img src="img/villa_hh.jpg" alt="" loading="lazy"></div><div class="pbody"><div class="eb mute">Phuket</div><h3 class="pt">Best Areas for Luxury Villas in Phuket</h3><span class="more">Read the guide<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></span></div></a></div></section>
+</main>
+<footer class="ftr wrap" id="advisor"><div class="fgrid"><div class="fcol" style="gap:22px"><a class="logo" href="#home"><b>Luxury Thai Life</b><span>Property · Residency · Relocation</span></a><p style="font-size:15px;color:var(--dmute);max-width:340px">Luxury property, long-term stay planning and private relocation advisory for international clients.</p><div style="font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--dmute)">Bangkok · [OFFICE ADDRESS] · [PHONE]</div></div><div class="fcol"><div class="lab">Buy Property</div><a href="#bangkok">Bangkok</a><a href="#properties">Phuket</a><a href="#properties">Koh Samui</a><a href="#properties">All residences</a><a href="#ownership">What foreigners can own</a></div><div class="fcol"><div class="lab">Live in Thailand</div><a href="#matrix">Compare options</a><a href="#ltr">LTR and property</a><a href="#privilege">Thailand Privilege</a><a href="#pr">Permanent Residence</a><a href="#citizenship">Citizenship: the facts</a></div><div class="fcol"><div class="lab">Relocate</div><a href="#schools">Schools</a><a href="#healthcare">Healthcare</a><a href="#banking">Moving money</a><a href="#tax">Tax residency</a><a href="#nationality">By nationality</a></div><div class="fcol"><div class="lab">Company</div><a href="#private">Private Client</a><a href="#guides">Guides</a><a href="#assessment">Residency Assessment</a><a href="#insights">Insights</a></div></div>
+<p class="fdisc">Luxury Thai Life is a property and relocation advisory. We are not a law firm, a government agency or an immigration authority. Visa, permanent residence and citizenship decisions are made solely by the Thai authorities, and buying property does not by itself grant any of them. Legal, tax and immigration advice is given by independent licensed professionals. Rules summarised on this site were last reviewed on 24 September 2026.</p>
+<div class="fbot"><span>© 2026 Luxury Thai Life</span><span>Bangkok skyline photo: Sergei Gussev, CC BY 4.0</span></div></footer>
+<script>
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('[data-page]'));
+  var names=pages.map(function(p){return p.getAttribute('data-page')});
+  var anchors={pathways:'live',matrix:'live',ltr:'live',privilege:'live',retirement:'live',business:'live',family:'live',pr:'live',citizenship:'live',sources:'live',schools:'relocate',healthcare:'relocate',banking:'relocate',tax:'relocate',nationality:'relocate',residency:'live'};
+  var body=document.body, current=null;
+  function setSolid(){
+    var p=document.querySelector('[data-page]:not([hidden])');
+    var hero=p&&p.hasAttribute('data-hero');
+    body.classList.toggle('solid', !hero || window.scrollY>80);
+  }
+  function show(name, scrollId){
+    if(names.indexOf(name)<0) name='home';
+    if(name!==current){
+      pages.forEach(function(p){var on=p.getAttribute('data-page')===name;p.hidden=!on;if(on){p.classList.remove('page-enter');void p.offsetWidth;p.classList.add('page-enter')}});
+      current=name;
+      document.querySelectorAll('.nav a').forEach(function(a){if(a.getAttribute('data-nav')===name)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
+      if(!scrollId) window.scrollTo(0,0);
+    }
+    if(scrollId){var el=document.getElementById(scrollId); if(el) el.scrollIntoView({behavior:'smooth'});}
+    setSolid();
+  }
+  function route(){
+    var h=(location.hash||'#home').slice(1);
+    closeMenu();
+    if(h==='advisor'){ if(!current) show('home'); var f=document.getElementById('advisor'); if(f) f.scrollIntoView({behavior:'smooth'}); return; }
+    if(anchors[h]){ show(anchors[h], h); return; }
+    show(h);
+  }
+  window.addEventListener('hashchange',route);
+  window.addEventListener('scroll',setSolid,{passive:true});
+
+  var mnav=document.getElementById('mnav'), mo=document.getElementById('menu-open'), mc=document.getElementById('menu-close');
+  function closeMenu(){ if(!mnav.hidden){mnav.hidden=true;mo.setAttribute('aria-expanded','false');document.documentElement.style.overflow='';} }
+  mo.addEventListener('click',function(){mnav.hidden=false;mo.setAttribute('aria-expanded','true');document.documentElement.style.overflow='hidden';mc.focus()});
+  mc.addEventListener('click',closeMenu);
+  mnav.addEventListener('click',function(e){ if(e.target.closest('a')) closeMenu(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeMenu(); });
+
+  document.querySelectorAll('.chip').forEach(function(c){c.addEventListener('click',function(){c.setAttribute('aria-pressed',c.getAttribute('aria-pressed')==='true'?'false':'true')})});
+  var hs=document.getElementById('home-search'); if(hs) hs.addEventListener('submit',function(e){e.preventDefault();location.hash='properties'});
+  var opts=[].slice.call(document.querySelectorAll('#opts .opt')), qc=document.getElementById('q-count');
+  function count(){var n=opts.filter(function(o){return o.getAttribute('aria-pressed')==='true'}).length;qc.textContent=n?n+' selected':''}
+  opts.forEach(function(o){o.addEventListener('click',function(){o.setAttribute('aria-pressed',o.getAttribute('aria-pressed')==='true'?'false':'true');count()})});
+
+  var vg=document.getElementById('v-grid'), vm=document.getElementById('v-map'), gv=document.getElementById('grid-view'), mv=document.getElementById('map-view');
+  function view(m){vg.setAttribute('aria-pressed',String(!m));vm.setAttribute('aria-pressed',String(m));gv.hidden=m;mv.hidden=!m}
+  vg.addEventListener('click',function(){view(false)}); vm.addEventListener('click',function(){view(true)});
+  document.querySelectorAll('.pin').forEach(function(p){p.addEventListener('click',function(){document.querySelectorAll('.pin').forEach(function(q){q.classList.toggle('on',q===p)})})});
+
+  var thumbs=[].slice.call(document.querySelectorAll('.thumbs button')), gi=document.getElementById('gal-img'), cap=document.getElementById('gal-cap'), idx=0;
+  function go(i){idx=(i+thumbs.length)%thumbs.length;var t=thumbs[idx];gi.src=t.querySelector('img').getAttribute('src');gi.alt=t.getAttribute('aria-label');cap.textContent=t.getAttribute('aria-label')+' · '+(idx+1)+' / 36';thumbs.forEach(function(b,j){b.setAttribute('aria-current',String(j===idx))})}
+  thumbs.forEach(function(b,i){b.addEventListener('click',function(){go(i)})});
+  document.getElementById('gal-prev').addEventListener('click',function(){go(idx-1)});
+  document.getElementById('gal-next').addEventListener('click',function(){go(idx+1)});
+
+  route();
+})();
+
+(function(){
+  var OX=['United States','United Kingdom','Germany','France','Switzerland','Netherlands','Sweden','Norway','Denmark','Finland','Australia','Canada','Japan','Italy'];
+  var ME=['United Arab Emirates','Saudi Arabia','Qatar','Kuwait','Bahrain','Oman'];
+  var PROPS={Bangkok:['gentry','r32','river'],Phuket:['andaman'],'Koh Samui':['sila'],'Hua Hin':['pines'],Pattaya:['marina'],'Chiang Mai':['doi'],Undecided:['gentry','andaman','sila']};
+  var PD={gentry:['g_ext','Bangkok · Phatthanakan','The Gentry Phatthanakan',85],r32:['r32_render','Bangkok · Phatthanakan','32 Residence, Plot 4',75],river:['river_res','Bangkok · Riverside','The Residences at Chao Phraya',95],andaman:['villa_pk','Phuket · Kamala','Villa Andaman Crest',168],sila:['villa_sm','Koh Samui · Choeng Mon','Baan Sila',62],pines:['villa_hh2','Hua Hin · Khao Takiab','Sea Pines Residence',46],marina:['penthouse','Pattaya · Na Jomtien','The Marina Penthouse',54],doi:['invest','Chiang Mai · Hang Dong','Doi Suthep Garden House',38]};
+  var f=document.getElementById('aform'), out=document.getElementById('results');
+  if(!f) return;
+  function v(id){return document.getElementById(id).value}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function run(){
+    var nat=v('a-nat'), age=parseInt(v('a-age'),10)||0, fam=v('a-fam'), nw=+v('a-nw'), inc=+v('a-inc'), work=v('a-work'), bud=+v('a-bud'), loc=v('a-loc'), stay=v('a-stay');
+    var R=[];
+    if(nw>=1){R.push({s:bud>=20?92:80,n:'LTR · Wealthy Global Citizen',a:'ltr',why:'Your assets appear to meet the USD 1M test. '+(bud>=20?'Your property budget could cover the USD 500,000 Thai-investment test, if the home is held in a qualifying way in your own name.':'A smaller property could be combined with Thai bonds or direct investment to reach USD 500,000.'),need:'USD 1M in assets; USD 500,000 invested in Thailand; health insurance or equivalent.'});}
+    if(age>=50&&(work==='passive'||work==='none')&&inc>=40){R.push({s:inc>=80?88:78,n:'LTR · Wealthy Pensioner',a:'ltr',why:inc>=80?'Passive income of USD 80,000+ meets the test on its own.':'With USD 40,000 to 80,000 of passive income, you would add USD 250,000 invested in Thailand; property can count.',need:'Age 50+; passive income evidence; health insurance.'});}
+    if(work==='remote'&&inc>=40){R.push({s:inc>=80?86:62,n:'LTR · Work-from-Thailand Professional',a:'ltr',why:'For remote employees of established foreign companies.'+(inc<80?' Below USD 80,000 you would also need a master\'s degree.':''),need:'Employer size criteria; USD 80,000 income over two years.'});}
+    if(work==='local'||work==='business'){R.push({s:74,n:'Business visa and work permit',a:'business',why:work==='business'?'If you will run a company or work in Thailand, a Non-B with a work permit, or a BOI route, lets you work legally and builds the history PR applications look for.':'Employment with a Thai company, with a work permit, is the most common base for a later PR application.',need:'A Thai employer or company meeting capital and staffing rules.'});}
+    if(fam==='thai'){R.push({s:84,n:'Non-O visa, spouse of a Thai national',a:'family',why:'Marriage to a Thai citizen opens a family visa and a family category for permanent residence.',need:'Marriage registration; financial test.'});}
+    if(age>=50&&OX.indexOf(nat)>=0&&work!=='local'){R.push({s:76,n:'Retirement O-X (10 years)',a:'retirement',why:'Your nationality is one of the 14 eligible for the O-X at 50+.',need:'THB 3M Thai deposit (or 1.8M + 1.2M yearly income); health insurance.'});}
+    else if(age>=50&&work!=='local'){R.push({s:62,n:'Retirement O-A',a:'retirement',why:'A one-year retirement visa, renewed annually.',need:'Deposit or income test; health insurance.'});}
+    R.push({s:stay==='few'?82:(nw>=1?64:58),n:'Thailand Privilege',a:'privilege',why:'The simplest route: a paid membership of 5 to 20 years with no income test. It is not linked to property and does not lead to PR.',need:'Membership fee from THB 650,000; background check.'});
+    if(work==='remote'&&age<50){R.push({s:60,n:'Destination Thailand Visa (DTV)',a:'matrix',why:'Flexible stays of up to 180 days per entry for remote workers.',need:'THB 500,000 in funds; remote work for foreign clients only.'});}
+    R.sort(function(a,b){return b.s-a.s}); R=R.slice(0,3);
+    var notes=[];
+    if(stay==='perm') notes.push(['Thinking permanently','Permanent residence is possible only after years of qualifying stay, within an annual quota, and is never guaranteed. Property does not count towards it directly. Whether LTR years count is still to be confirmed.']);
+    if(fam==='extended'||fam==='kids') notes.push(['Family','The LTR covers a spouse and children under 20, up to four dependants. Parents and larger households may need their own visas.']);
+    if(nat==='China (mainland)') notes.push(['Moving funds from mainland China','Transfers must use licensed, traceable bank channels within applicable foreign-exchange rules. We do not assist with circumventing capital controls.']);
+    if(nat==='United States') notes.push(['US tax','US citizens remain taxable in the US; Thai accounts and companies bring FBAR, FATCA and possibly other filings. Speak to a US tax adviser.']);
+    if(ME.indexOf(nat)>=0) notes.push(['For your family','We shortlist homes around schools, halal dining, prayer facilities and private healthcare, and coordinate concierge and security partners.']);
+    if(['United Kingdom','Germany','France','Switzerland','Netherlands','Sweden','Norway','Denmark','Finland','Italy'].indexOf(nat)>=0) notes.push(['Tax and estate','Your home country\'s tax residency and inheritance rules still apply to Thai assets. Plan both sides before you move.']);
+    var h='<div class="shead" style="margin-bottom:8px"><div class="shead-t"><div class="eb">Indicative routes</div><h2 class="h2" style="font-size:clamp(34px,3.6vw,52px)">Routes worth exploring</h2></div></div>';
+    R.forEach(function(r,i){h+='<article class="route"><span class="rk">'+'ABC'[i]+'</span><div style="display:flex;flex-direction:column;gap:8px"><div class="fit">Indicative fit <span class="meter"><i style="width:'+r.s+'%"></i></span></div><h3>'+esc(r.n)+'</h3></div><div class="body"><p>'+esc(r.why)+'</p><p class="need"><b>You would need:</b> '+esc(r.need)+'</p><a class="tl" href="#'+r.a+'" style="align-self:flex-start">How this route works<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16"/><path d="M14 6l6 6-6 6"/></svg></a></div></article>'});
+    if(notes.length){h+='<div class="notes">';notes.forEach(function(n){h+='<div class="callout"><b class="t">'+esc(n[0])+'</b><p>'+esc(n[1])+'</p></div>'});h+='</div>';}
+    var ks=(PROPS[loc]||PROPS.Undecided).filter(function(k){var p=PD[k][3];return bud>=250?true:p<=bud*1.35;});
+    if(!ks.length) ks=(PROPS[loc]||PROPS.Undecided).slice(0,2);
+    h+='<div class="eb" style="margin-top:28px">Homes that fit</div><div class="recs">';
+    ks.slice(0,3).forEach(function(k){var p=PD[k];h+='<a class="pc" href="#residence"><div class="ph"><img src="img/'+p[0]+'.jpg" alt="'+esc(p[2])+'"></div><div class="pbody"><div class="eb mute">'+esc(p[1])+'</div><h3 class="pt">'+esc(p[2])+'</h3><span class="price">฿'+p[3]+'M</span></div></a>'});
+    h+='</div>';
+    h+='<div class="callout" style="margin-top:12px"><b class="t">Next step</b><p>Book a private video consultation. An advisor reviews your answers and, where needed, brings in a licensed immigration lawyer.</p><form class="consult" id="consult"><div class="fld"><label for="c-name">Name</label><input id="c-name" type="text" autocomplete="name" required></div><div class="fld"><label for="c-email">Email</label><input id="c-email" type="email" autocomplete="email" required></div><button class="btn" type="submit">Request Consultation</button></form><div id="c-ok" class="ok" hidden>Request noted. This is a design concept, so nothing was sent.</div></div>';
+    h+='<p class="muted" style="font-size:13px">Indicative only, based on published criteria reviewed 24 September 2026. Not legal advice. No visa, residence or citizenship outcome is promised.</p>';
+    out.innerHTML=h;
+    var c=document.getElementById('consult');
+    c.addEventListener('submit',function(e){e.preventDefault();document.getElementById('c-ok').hidden=false;c.hidden=true;});
+  }
+  f.addEventListener('submit',function(e){e.preventDefault();run();out.scrollIntoView({behavior:'smooth',block:'start'})});
+  f.addEventListener('change',run);
+  run();
+})();
+</script>
+
+</body>
+</html>
